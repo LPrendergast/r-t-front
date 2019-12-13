@@ -5,3 +5,12 @@
   margin: 0;
   padding: 0;
 }
+
+.nav-bar{
+  position: relative;
+
+}
+
+.log-out {
+  float: right;
+}

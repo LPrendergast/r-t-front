@@ -5,7 +5,9 @@ import Auth from './pages/Auth'
 import Main from './pages/Main.js'
 import API from './adapters/API'
 import Login from "./pages/Auth/Login";
-// import Signup from "./pages/Auth/Signup"
+import Signup from "./pages/Auth/Signup"
+import NavBar from './NavBar'
+import Artists from './pages/Artists'
 
 
 function App({history}) {
@@ -15,18 +17,29 @@ function App({history}) {
     API.validate()
     .then(artist => {
       setArtist(artist)
+      // history.push('/')
     })
     .catch(() =>{
       history.push('/')
     })
   }, [])
 
+  const logout = () => {
+   API.logout();
+   setArtist(null);
+   history.push('/');
+ };
+
   return (
     <div className="App">
+      <div className='ui container'><NavBar artist={artist} logout={logout}/>
       <Switch>
-        <Route path="/auth" render={routerProps => <Auth{...routerProps} setArtist={setArtist} />}/>
-        <Route exact path="/" component={Main}/>
+        <Route exact path="/" component={props => <Main {...props} logout={logout}/>}/>
+          <Route path="/login" component={props => <Login {...props} setArtist={setArtist} />} />
+          <Route path="/signup" component={props => <Signup {...props} setArtist={setArtist}/>} />
+          <Route exact path='/Artists' component={props => <Artists {...props} setArtist={setArtist}/>} />
       </Switch>
+    </div>
     </div>
   );
 }

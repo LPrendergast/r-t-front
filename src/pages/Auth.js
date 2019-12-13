@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route} from "react-router-dom";
 import Login from './Auth/Login'
+import Signup from "./Auth/Signup"
+
 
 const Auth = (props) => {
   return (
@@ -9,7 +11,7 @@ const Auth = (props) => {
     <Login setArtist={props.setArtist}/>
     </Route>
     <Route path="/auth/signup">
-      <div>Sign Up</div>
+      <Signup setArtist={props.setArtist}/>
     </Route>
     </>
   )
