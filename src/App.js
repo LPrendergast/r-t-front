@@ -8,7 +8,7 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup"
 import NavBar from './NavBar'
 import Artists from './pages/Artists'
-
+import NewEvent from './pages/events/NewEvent'
 
 function App({history}) {
   const [artist, setArtist] = useState(null)
@@ -38,6 +38,7 @@ function App({history}) {
           <Route path="/login" component={props => <Login {...props} setArtist={setArtist} />} />
           <Route path="/signup" component={props => <Signup {...props} setArtist={setArtist}/>} />
           <Route exact path='/Artists' component={props => <Artists {...props} setArtist={setArtist}/>} />
+          <Route path='/NewEvent' component={props => <NewEvent {...props} /> } />
       </Switch>
     </div>
     </div>

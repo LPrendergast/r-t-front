@@ -24,6 +24,10 @@ import {BrowserRouter as Router,Switch,Route,Redirect,Link,useHistory,NavLink} f
            <Link to='/Artists'>Artists</Link>
          </Menu.Item>
 
+         <Menu.Item name='new-event' active={activeItem === 'new-event'} onClick={this.handleItemClick}>
+           {this.props.artist ?<Link to="/newevent">Add Event</Link>:null}
+         </Menu.Item>
+
          <Menu.Item name='sign-in' active={activeItem === 'sign-in'} onClick={this.handleItemClick}>
            {this.props.artist ?<Link to="/"><div onClick={this.props.logout} className='log-out'>Log out</div></Link>:<Link to='/login'>Sign-in/Up</Link>}
          </Menu.Item>

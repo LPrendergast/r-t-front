@@ -4,11 +4,7 @@ import {useHistory} from 'react-router-dom'
 import {Button, Divider, Form, Grid, Segment} from 'semantic-ui-react'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  Link,
-  NavLink
+  Link
 } from "react-router-dom";
 
 const Login = (props) => {
