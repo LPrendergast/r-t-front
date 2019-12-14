@@ -54,4 +54,14 @@ const logout = () => {
   localStorage.removeItem("token");
 };
 
-export default {login, validate, signup, logout}
+const postEvent = (event) => fetch(EVENTS_URL,{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      'Authorization': localStorage.getItem("token")
+    },
+    body: JSON.stringify({event})
+}).then(jsonify)
+
+export default {login, validate, signup, logout,postEvent}

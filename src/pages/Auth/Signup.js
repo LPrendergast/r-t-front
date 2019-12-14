@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
 import {
-   BrowserRouter as Router,
-   Switch,
-   Route,
-   Redirect,
    Link,
    useHistory
  } from "react-router-dom";
@@ -41,6 +37,8 @@ import {
         <div className="ui icon warning message">
             <i className="lock icon"></i>
             <div className="content">
+              <p>{errors.join()}</p>
+
             <h1 align="center">Create Artist Account</h1>
               <div className="header">
                 {!errors ? 'Signup failed!' : null}

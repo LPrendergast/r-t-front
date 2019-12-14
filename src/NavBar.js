@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Menu,Segment } from 'semantic-ui-react'
-import {BrowserRouter as Router,Switch,Route,Redirect,Link,useHistory,NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
  export default class Navbar extends Component{
    state = {activeItem: 'events'}
@@ -14,7 +14,7 @@ import {BrowserRouter as Router,Switch,Route,Redirect,Link,useHistory,NavLink} f
        <Segment >
        <Menu stackable secondary >
          <Menu.Item>
-           <img src='/logo.png'/>
+           <img src='/logo.png' alt=''/>
          </Menu.Item>
          <Menu.Item name='events' position='right'active={activeItem === 'events'} onClick={this.handleItemClick} color='black'>
            <Link to="/">Events</Link>
@@ -37,6 +37,3 @@ import {BrowserRouter as Router,Switch,Route,Redirect,Link,useHistory,NavLink} f
      )
    }
  }
- // <Menu.Item name='sign-up' active={activeItem === 'sign-up'} onClick={this.handleItemClick}>
- //   {this.props.artist ? <></>  :<Link to='signup'>Sign-up</Link>}
- // </Menu.Item>
