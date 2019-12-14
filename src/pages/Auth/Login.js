@@ -1,10 +1,15 @@
 import React, {useState} from 'react'
 import API from '../../adapters/API'
 import {useHistory} from 'react-router-dom'
-import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
-import {BrowserRouter as Router,Switch,Route,Redirect,Link,NavLink} from "react-router-dom";
-
-
+import {Button, Divider, Form, Grid, Segment} from 'semantic-ui-react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+  NavLink
+} from "react-router-dom";
 
 const Login = (props) => {
   const [username, setUsername] = useState('')
@@ -12,72 +17,51 @@ const Login = (props) => {
   const [errors, setErrors] = useState([])
   const history = useHistory()
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-    API.login({username, password})
-    .then(artist => {
+    API.login({username, password}).then(artist => {
       console.log(artist)
       props.setArtist(artist)
       history.push('/')
-    })
-    .catch(errors => {
+    }).catch(errors => {
       console.error(errors)
       setErrors(errors)
     })
   }
 
-  return (
-    <Segment placeholder>
-    <Grid columns={2} relaxed='very' stackable>
+  return (<Segment placeholder="placeholder" style={{background: 'white'}}>
+    <Grid columns={2} relaxed='very' stackable="stackable">
       <Grid.Column>
-    <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <p>{errors.join()}</p>
-          <input type="text" placeholder="Username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
-          <input type="password" placeholder="Password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
-          <input type="submit" />
-        </form>
+          <Form.Input
+            type="text"
+            placeholder="Username"
+            name="username" value={username}
+            onChange={e => setUsername(e.target.value)}
+            icon='user'
+            iconPosition='left'
+            />
+          <Form.Input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            icon='lock'
+            iconPosition='left'
+            />
+          <Form.Input type="submit"/>
+        </Form>
       </Grid.Column>
 
-        <Grid.Column verticalAlign='middle'>
-          <Link to='signup'><Button content='Sign up' icon='signup' size='big' type='submit'/></Link>
-        </Grid.Column>
-      </Grid>
+      <Grid.Column verticalAlign='middle'>
+        <Link to='signup'><Button content='Sign up' icon='signup' size='big' type='submit'style={{background: 'white'}}/></Link>
+      </Grid.Column>
+    </Grid>
 
-      <Divider vertical>Or</Divider>
-      </Segment>
-
-  )
+    <Divider vertical="vertical">Or</Divider>
+  </Segment>)
 }
 
 export default Login
-
-// <Segment placeholder>
-// <Grid columns={2} relaxed='very' stackable>
-//   <Grid.Column>
-//     <Form onSubmit={handleSubmit}>
-//       <Form.Input
-//         icon='user'
-//         iconPosition='left'
-//         label='Username'
-//         placeholder='Username'
-//         value={username} onChange={e => setUsername(e.target.value)}
-//       />
-//       <Form.Input
-//         icon='lock'
-//         iconPosition='left'
-//         label='Password'
-//         type='password'
-//         value={password} onChange={e => setPassword(e.target.value)}
-//       />
-//
-//     <Link to='/'><Button content='Login' primary /></Link>
-//     </Form>
-//   </Grid.Column>
-//
-//   <Grid.Column verticalAlign='middle'>
-//     <Link to='signup'><Button content='Sign up' icon='signup' size='big' type='submit'/></Link>
-//   </Grid.Column>
-// </Grid>
-//
-// <Divider vertical>Or</Divider>
-// </Segment>
