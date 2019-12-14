@@ -47,7 +47,7 @@ const Login = (props) => {
             icon='lock'
             iconPosition='left'
             />
-          <Form.Input type="submit"/>
+          <Form.Input type="submit"value='Log in'/>
         </Form>
       </Grid.Column>
 
