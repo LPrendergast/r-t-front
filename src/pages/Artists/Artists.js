@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Artist from './Artist.js'
 import ArtistPage from './ArtistPage.js'
-import { Redirect, Link} from "react-router-dom";
+import { useHistory,Redirect, Link} from "react-router-dom";
 
 
 export default class Artists extends Component {
@@ -18,7 +18,8 @@ export default class Artists extends Component {
   handleClick = e => {
     fetch(`http://localhost:3000/artists/${e.target.value}`)
     .then(res => res.json())
-    .then(artist => this.setState({chosenArtist: artist}))
+    .then(artist => this.setState({chosenArtist: artist}, () => this.props.history.push(`/artists/${artist.id}`)))
+    .then(() =>this.props.setChosenArtist(this.state.chosenArtist))
   }
 
   render(){
