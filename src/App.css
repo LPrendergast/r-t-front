@@ -1,5 +1,7 @@
 html, body {
   height: 100%;
+  width: 100%;
+
 }
 
 .App {
@@ -22,6 +24,7 @@ html, body {
   display: flex;
   position: absolute;
   flex-direction: column;
+  margin: 10 10 10 10;
   flex: 1;
   left: 0;
   bottom: 0;
@@ -102,4 +105,25 @@ html, body {
 
 .geosuggest__item__matched-text {
   font-weight: bold;
+}
+
+.cards-div{
+  height: 80vh;
+  width: 100%;
+  overflow:auto;
+  /* display:inline-block; */
+}
+.card{
+  position:relative;
+  display:inline-block;
+  width: 100%;
+}
+.ui.cards>.card {
+  cursor: pointer;
+}
+.ui.cards>.card:hover {
+  background-color: #efefef;
+}
+.ui.cards > .create-action.card:hover {
+  background-color: #fff;
 }

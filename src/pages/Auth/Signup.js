@@ -76,7 +76,7 @@ import {
               </div>
             </form>
           </div>
-          <Link to="login">Already Signed-up? Login Here.</Link>
+          <Link to="/login">Already Signed-up? Login Here.</Link>
         </div>
       </div>
     </div>
