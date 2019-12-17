@@ -6,7 +6,7 @@ import { GoogleMap, Marker } from "react-google-maps"
 import Map from './Map'
 
 
-const EventPage = ({date,description,id,image_url,location,title}) =>{
+const EventPage = ({date,description,id,image_url,location,title,latitude,longitude}) =>{
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
@@ -25,7 +25,7 @@ const EventPage = ({date,description,id,image_url,location,title}) =>{
     }
     return(
       <div>
-        <Map />
+        <Map latitude={latitude} longitude={longitude} />
         <Link to="/event/edit"><Button onClick={handleEdit} value='test'>Edit Event</Button></Link>
         <Button onClick={handleDelete} value={id}>Delete Account</Button>
       </div>

@@ -23,9 +23,6 @@ function App({history}) {
   const [artist, setArtist] = useState(null)
   const [chosenArtist, setChosenArtist] = useState(null)
   const [chosenEvent, setChosenEvent] = useState(null)
-  const [latitude, setLatitude] = useState(null)
-  const [longitude, setLongitude] = useState(null)
-
 
   useEffect(() => {
     API.validate().then(artist => {
@@ -50,8 +47,8 @@ function App({history}) {
         <Route path="/signup" component={props => <Signup {...props} setArtist={setArtist}/>}/>
         <Route exact="exact" path='/Artists' component={props => <Artists {...props} setArtist={setArtist} setChosenArtist={setChosenArtist}/>}/>
         <Route exact="exact" path='/Artists/:id' component={props => <ArtistPage {...props} chosenArtist={chosenArtist}/>}/>
-        <Route exact="exact" path='/Events/:id' component={props => <EventPage {...props} {...chosenEvent} latitude={latitude} longitude={longitude}/>}/>
-        <Route path='/NewEvent' component={props => <NewEvent {...props} setLatitude={setLatitude} setLongitude={setLongitude}/>}/>
+        <Route exact="exact" path='/Events/:id' component={props => <EventPage {...props} {...chosenEvent}/>}/>
+        <Route path='/NewEvent' component={props => <NewEvent {...props}/>}/>
         <Route exact="exact" path='/Account' component={props => <Account {...props} {...artist}/>}/>
         <Route exact="exact" path='/Account/edit' component={props => <AccountEdit {...props} {...artist} setArtist={setArtist}/>}/>
         <Route exact="exact" path='/event/edit' component={props => <EventEdit {...props} {...artist} chosenEvent={chosenEvent} />}/>

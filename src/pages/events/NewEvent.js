@@ -18,6 +18,7 @@ const NewEvent = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(e)
     API.postEvent({title,description,image_url,location,latitude,longitude,date})
     .then(event =>{
       history.push(`/events/${event.id}`)
