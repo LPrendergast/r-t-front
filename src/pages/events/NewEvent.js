@@ -8,7 +8,7 @@ import Geosuggest from './Geosuggest';
 const NewEvent = (props) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [image, setImage] = useState('')
+  const [image_url, setImage] = useState('')
   const [location, setLocation] = useState('')
   const [latitude, setLatitude] = useState('')
   const [longitude, setLongitude] = useState('')
@@ -18,7 +18,7 @@ const NewEvent = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    API.postEvent({title,description,image,location,latitude,longitude,date})
+    API.postEvent({title,description,image_url,location,latitude,longitude,date})
     .then(event =>{
       history.push(`/events/${event.id}`)
     })
@@ -34,7 +34,7 @@ const NewEvent = (props) => {
     <p>{errors.join()}</p>
     <Form.Input type="text" placeholder="Event Title" name="title" value={title} onChange={e => setTitle(e.target.value)} icon="heart" iconPosition='left'/>
     <Form.Input type="text" placeholder="Event Description" name="description" value={description} onChange={e => setDescription(e.target.value)} icon='barcode' iconPosition='left'/>
-    <Form.Input type="url" placeholder="Event Banner Image URL" name="image" value={image} onChange={e => setImage(e.target.value)} icon='image' iconPosition='left'/>
+    <Form.Input type="url" placeholder="Event Banner Image URL" name="image" value={image_url} onChange={e => setImage(e.target.value)} icon='image' iconPosition='left'/>
     <Form.Input type="date" placeholder="Event Date" name="date" value={date} onChange={e => setDate(e.target.value)} icon='time' iconPosition='left'/>
     <Geosuggest placeholder="Event Location" name="location" value={location} onChange={handleAddress} icon='location arrow' iconPosition='left'/>
     <Button content='Add Event!' icon='signup' size='big' type='submit' style={{background: 'light-grey'}}/>

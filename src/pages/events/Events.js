@@ -7,7 +7,7 @@ import { useHistory,Redirect, Link} from "react-router-dom";
 export default class Events extends Component {
   state ={
     events: [],
-    chosenEvent: ''
+    chosenEvent: []
   }
   componentDidMount(){
     fetch('http://localhost:3000/events')
