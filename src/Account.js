@@ -35,7 +35,7 @@ const Account = ({username,id}) => {
     <h1>Account Details: {username}</h1><br/>
     <div>
       </div>
-      <Button onClick={handleEdit} value={id}>Edit Account</Button>
+      <Link to="/account/edit"><Button onClick={handleEdit} value={id}>Edit Account</Button></Link>
       <Button onClick={handleDelete} value={id}>Delete Account</Button>
 
     </div>

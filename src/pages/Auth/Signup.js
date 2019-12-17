@@ -51,26 +51,26 @@ import {
             <form onSubmit={handleSubmit} className="ui form">
               <div className="field">
               <input type="text" placeholder="Username" name="username"value={username}
-                onChange={e => setUsername(e.target.value)}/>
+                onChange={e => setUsername(e.target.value)} required/>
             <div className="field">
               <input type="password" placeholder="Password" name="password" value={password}
-                onChange={e => setPassword(e.target.value)}/>
+                onChange={e => setPassword(e.target.value)} required/>
           </div>
               <div className="field">
                 <input type="text" placeholder="Artist Name" name="artistName" value={artist_name}
-                  onChange={e => setArtistName(e.target.value)}/>
+                  onChange={e => setArtistName(e.target.value)} required/>
             </div>
             <div className="field">
               <input type="text" placeholder="Artist Description" name="description" value={description}
-                onChange={e => setDescription(e.target.value)}/>
+                onChange={e => setDescription(e.target.value)} required/>
           </div>
           <div className="field">
             <input type="url" placeholder="Picture of Art Work" name="artwork" value={image_url}
-              onChange={e => setImage(e.target.value)}/>
+              onChange={e => setImage(e.target.value)} required/>
         </div>
         <div className="field">
           <input type="url" placeholder="Portfolio Link" name="portfolio" value={portfolio}
-            onChange={e => setPortfolio(e.target.value)}/>
+            onChange={e => setPortfolio(e.target.value)} required/>
       </div>
               <input type="submit" value="Sign up"/>
               </div>

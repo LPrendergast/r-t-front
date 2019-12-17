@@ -75,4 +75,25 @@ const deleteArtist = (id) => fetch(`http://localhost:3000/artists/${id}`,{
   body: JSON.stringify({id})
 }).then(jsonify).then(logout)
 
-export default {login, validate, signup, logout, postEvent, deleteArtist}
+const deleteEvent = (id) => fetch(`http://localhost:3000/events/${id}`,{
+  method: "DELETE",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    'Authorization': localStorage.getItem("token")
+  },
+  body: JSON.stringify({id})
+}).then(jsonify)
+
+const editArtist = (artistDetails, id) => fetch(`http://localhost:3000/artists/${id}`,{
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    'Authorization': localStorage.getItem("token")
+  },
+  body: JSON.stringify({artistDetails})
+}).then(jsonify)
+
+
+export default {login, validate, signup, logout, postEvent, deleteArtist, editArtist, deleteEvent}
