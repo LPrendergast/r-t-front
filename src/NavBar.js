@@ -44,6 +44,16 @@ export default class Navbar extends Component {
           }
         </Menu.Item>
 
+        <Menu.Item name='account' active={activeItem === 'Your Account'} onClick={this.handleItemClick}>
+          {
+            this.props.artist
+              ? <Link to="/account">
+                  Your Account
+                </Link>
+              : null
+          }
+        </Menu.Item>
+
       </Menu>
     </Segment>)
   }

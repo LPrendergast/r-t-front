@@ -14,6 +14,9 @@ import Events from './pages/events/Events.js'
 import EventPage from './pages/events/EventPage.js'
 import NewEvent from './pages/events/NewEvent'
 import Footer from './Footer'
+import Account from './Account'
+import AccountEdit from './AccountEdit'
+
 
 function App({history}) {
   const [artist, setArtist] = useState(null)
@@ -53,6 +56,8 @@ function App({history}) {
           <Route exact path='/Events/:id' component={props => <EventPage {...props} chosenEvent={chosenEvent}/>} />
 
           <Route path='/NewEvent' component={props => <NewEvent {...props} /> } />
+          <Route exact path='/Account' component={props => <Account {...props} {...artist}/> } />
+          <Route exact path='/Account/edit' component={props => <AccountEdit {...props} {...artist}/> } />
       </Switch>
     </div>
     <div className="ui container footer-thing"><Footer /></div>
