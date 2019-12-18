@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import API from '../../adapters/API'
 import {useHistory} from 'react-router-dom'
 import {Button, Form} from 'semantic-ui-react'
-import {Link} from "react-router-dom";
 import Geosuggest from './Geosuggest';
 
 const NewEvent = (props) => {
@@ -33,11 +32,11 @@ const NewEvent = (props) => {
 
   return (<Form onSubmit={handleSubmit}>
     <p>{errors.join()}</p>
-    <Form.Input type="text" placeholder="Event Title" name="title" value={title} onChange={e => setTitle(e.target.value)} icon="heart" iconPosition='left'/>
-    <Form.Input type="text" placeholder="Event Description" name="description" value={description} onChange={e => setDescription(e.target.value)} icon='barcode' iconPosition='left'/>
-    <Form.Input type="url" placeholder="Event Banner Image URL" name="image" value={image_url} onChange={e => setImage(e.target.value)} icon='image' iconPosition='left'/>
-    <Form.Input type="date" placeholder="Event Date" name="date" value={date} onChange={e => setDate(e.target.value)} icon='time' iconPosition='left'/>
-    <Geosuggest placeholder="Event Location" name="location" value={location} onChange={handleAddress} icon='location arrow' iconPosition='left'/>
+    <Form.Input type="text" placeholder="Event Title" name="title" value={title} onChange={e => setTitle(e.target.value)} icon="heart" iconPosition='left' required/>
+    <Form.Input type="text" placeholder="Event Description" name="description" value={description} onChange={e => setDescription(e.target.value)} icon='barcode' iconPosition='left' required/>
+    <Form.Input type="url" placeholder="Event Banner Image URL" name="image" value={image_url} onChange={e => setImage(e.target.value)} icon='image' iconPosition='left' required/>
+    <Form.Input type="date" placeholder="Event Date" name="date" value={date} onChange={e => setDate(e.target.value)} icon='time' iconPosition='left' required/>
+    <Geosuggest placeholder="Event Location" name="location" value={location} onChange={handleAddress} icon='location arrow' iconPosition='left' required/>
     <Button content='Add Event!' icon='signup' size='big' type='submit' style={{background: 'light-grey'}}/>
   </Form>)
 }
