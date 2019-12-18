@@ -26,7 +26,7 @@ export default class Navbar extends Component {
           <Link to='/Artists'>Artists</Link>
         </Menu.Item>
 
-        <Menu.Item name='new-event' active={activeItem === 'new-event'} onClick={this.handleItemClick}>
+        <Menu.Item name={this.props.artist ? 'New Event' : null} active={activeItem === 'new-event'} onClick={this.handleItemClick}>
           {
             this.props.artist
               ? <Link to="/newevent">Add Event</Link>
@@ -44,7 +44,7 @@ export default class Navbar extends Component {
           }
         </Menu.Item>
 
-        <Menu.Item name='account' active={activeItem === 'Your Account'} onClick={this.handleItemClick}>
+        <Menu.Item name={this.props.artist ? 'account' : null} active={activeItem === 'Your Account'} onClick={this.handleItemClick}>
           {
             this.props.artist
               ? <Link to="/account">

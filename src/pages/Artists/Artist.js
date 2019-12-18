@@ -19,7 +19,7 @@ const Artist = ({
             <CardTitle>{artist_name}</CardTitle>
             <CardSubtitle><a href={portfolio}target="_blank" rel='noopener noreferrer'>Portfolio Link </a></CardSubtitle>
             <CardText>{description}</CardText>
-            <Button onClick={handleClick} value={id}>Artist Page</Button>
+            <Button onClick={() => handleClick(id)} >Artist Page</Button>
           </CardBody>
         </Card>
       </CardDeck>

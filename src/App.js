@@ -46,8 +46,8 @@ function App({history}) {
         <Route path="/login" component={props => <Login {...props} setArtist={setArtist}/>}/>
         <Route path="/signup" component={props => <Signup {...props} setArtist={setArtist}/>}/>
         <Route exact="exact" path='/Artists' component={props => <Artists {...props} setArtist={setArtist} setChosenArtist={setChosenArtist}/>}/>
-        <Route exact="exact" path='/Artists/:id' component={props => <ArtistPage {...props} chosenArtist={chosenArtist}/>}/>
-        <Route exact="exact" path='/Events/:id' component={props => <EventPage {...props} {...chosenEvent}/>}/>
+        <Route exact="exact" path='/Artists/:id' component={props => <ArtistPage {...props} {...chosenArtist}/>}/>
+        <Route exact="exact" path='/Events/:id' render={props => <EventPage {...props} {...chosenEvent}/>}/>
         <Route path='/NewEvent' component={props => <NewEvent {...props}/>}/>
         <Route exact="exact" path='/Account' component={props => <Account {...props} {...artist}/>}/>
         <Route exact="exact" path='/Account/edit' component={props => <AccountEdit {...props} {...artist} setArtist={setArtist}/>}/>

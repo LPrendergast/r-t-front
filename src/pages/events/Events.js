@@ -15,11 +15,10 @@ export default class Events extends Component {
     .then(data => this.setState({events: data}))
   }
 
-  handleClick = e => {
-    fetch(`http://localhost:3000/events/${e.target.value}`)
-    .then(res => res.json())
-    .then(event => this.setState({chosenEvent: event}, () => this.props.history.push(`/events/${event.id}`)))
-    .then(() =>this.props.setChosenEvent(this.state.chosenEvent))
+  handleClick = id => {
+    console.log(this.state.events.find(event => event.id === id))
+    this.props.setChosenEvent(this.state.events.find(event => event.id === id))
+    this.props.history.push(`/events/${id}`)
   }
 
   render(){
