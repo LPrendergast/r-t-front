@@ -20,22 +20,22 @@ const Account = ({username,id}) => {
     })
   }
 
-  const handleEdit = (e) => {
-    console.log(e.target.value)
-    // API.deleteArtist(e.target.value).then( artist =>{
-    //     history.push('/')
-    // }).catch(errors => {
-    //   console.error(errors)
-    //   setErrors(errors)
-    // })
-  }
+  // const handleEdit = (e) => {
+  //   console.log(e.target.value)
+  //   // API.deleteArtist(e.target.value).then( artist =>{
+  //   //     history.push('/')
+  //   // }).catch(errors => {
+  //   //   console.error(errors)
+  //   //   setErrors(errors)
+  //   // })
+  // }
   return (
 
   <div>
     <h1>Account Details: {username}</h1><br/>
     <div>
       </div>
-      <Link to="/account/edit"><Button onClick={handleEdit} value={id}>Edit Account</Button></Link>
+      <Link to="/account/edit"><Button value={id}>Edit Account</Button></Link>
       <Button onClick={handleDelete} value={id}>Delete Account</Button>
 
     </div>

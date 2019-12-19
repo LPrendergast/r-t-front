@@ -15,10 +15,9 @@ export default class Events extends Component {
   }
 
   handleClick = id => {
-    console.log(this.state.events.find(event => event.id === id))
     const chosenEvent = (this.state.events.find(event => event.id === id))
-    console.log(chosenEvent)
-    this.props.setChosenEventId(chosenEvent.id)
+    console.log(chosenEvent.id)
+    this.props.setChosenEvent(chosenEvent.id)
     this.props.history.push(`/events/${id}`)
   }
 

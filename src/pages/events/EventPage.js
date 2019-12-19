@@ -1,42 +1,48 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, Component} from 'react'
 import {Card, Button, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBody} from 'reactstrap';
 import {Link, useHistory} from "react-router-dom";
 import API from "../../adapters/API";
 import Map from './Map'
 
 
-const EventPage = ({date,description,id,image_url,location,title,latitude,longitude,artist}) =>{
-  const [errors, setErrors] = useState([]);
-  const history = useHistory()
+export default class EventPage extends Component{
+  state={
+    eventId: this.props.match.params.id,
+    currentEvent: ''
+  }
 
-    const handleEdit = (e) =>{
-      console.log(e)
-    }
+componentDidMount(){
+  fetch(`http://localhost:3000/events/${this.state.eventId}`)
+  .then(res => res.json())
+  .then(event => this.setState({currentEvent: event}))
+}
 
+  render(){
     const handleDelete = (e) =>{
       console.log(e.target.value)
-      API.deleteEvent(e.target.value).then( event =>{
-          history.push('/')
-      }).catch(errors => {
-        console.error(errors)
-        setErrors(errors)
-      })
+      API.deleteEvent(e.target.value)
+      .then( event =>{
+          this.props.history.push('/')})
+    }
+
+    const handleEdit = () =>{
+      this.props.setEventEdit(this.state.currentEvent)
     }
     return(
       <div class='ui grid' style={{height: '75vh',width: '100%'}}>
         <div class="ten wide column">
-        <h1>{title}</h1>
-        <p>{location ? location : null}, {date}</p>
-        <img src="image_url" alt='Image Failed to load'/>
+        <h1>{this.state.currentEvent.title}</h1>
+        <p>{this.state.currentEvent.location ? this.state.currentEvent.location : null}, {this.state.currentEvent.date}</p>
+        <img src="this.state.currentEvent.image_url" alt='Image Failed to load'/>
         </div>
         <div class="six wide column">
         <h1>Event Creator:</h1>
-        {artist ? (
+        {this.state.currentEvent.artist ? (
           <div>
-            <p>{artist.artist_name}</p>
-            <p>{artist.description}</p>
-            <p>{artist.image_url}</p>
-            <p>{artist.portfolio}</p>
+            <p>{this.state.currentEvent.artist.artist_name}</p>
+            <p>{this.state.currentEvent.artist.description}</p>
+            <p>{this.state.currentEvent.artist.image_url}</p>
+            <p>{this.state.currentEvent.artist.portfolio}</p>
           </div> 
           )
           : 'goodbyes'
@@ -44,13 +50,12 @@ const EventPage = ({date,description,id,image_url,location,title,latitude,longit
         </div>
         <div class="ten wide column">
         <Link to="/event/edit"><Button onClick={handleEdit} value='test'>Edit Event</Button></Link>
-        <Button onClick={handleDelete} value={id}>Delete Event</Button>
+        <Button onClick={handleDelete} value={this.state.currentEvent.id}>Delete Event</Button>
         </div>
         <div class="six wide column">
-        <Map latitude={latitude} longitude={longitude} style={{height: '100%', width: '100%'}}/>
+        {this.state.currentEvent.latitude ? <Map latitude={this.state.currentEvent.latitude} longitude={this.state.currentEvent.longitude} style={{height: '100%', width: '100%'}}/> : null}
         </div>
       </div>
     )
-
+  }
 }
-export default EventPage

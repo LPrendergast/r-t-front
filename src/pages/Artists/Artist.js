@@ -1,6 +1,5 @@
 import React from 'react'
 import {Card, Button, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBody} from 'reactstrap';
-  import {Link  } from "react-router-dom";
 
 const Artist = ({
   username,
