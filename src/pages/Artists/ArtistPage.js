@@ -24,17 +24,15 @@ export default class ArtistPage extends Component {
         <h1><a href={this.state.currentArtist.portfolio} target="_blank" rel='noopener noreferrer'>Portfolio Link</a></h1>
         <div>
         <h1>Artist Events</h1>
-        {this.props.events ? (this.props.events.map(event => 
-        <div>
-          <p>{event.title}</p>
-          <p>{event.location}</p>
-          <p>{event.date}</p>
-          <p>{event.image_url}</p>
-          <p>{event.description}</p>
-          </div>))
-        :
-        'No Data.'
-        }
+        {
+          this.state.currentArtist 
+          ? 
+          (this.state.currentArtist.events.map(event => 
+            <EventDiv {...event}/>
+            )) 
+          : 
+          'Loading Events'
+          }
 
         </div>
       </div>

@@ -29,30 +29,34 @@ componentDidMount(){
       this.props.setEventEdit(this.state.currentEvent)
     }
     return(
-      <div class='ui grid' style={{height: '75vh',width: '100%'}}>
-        <div class="ten wide column">
+      <div class='ui grid' style={{height: '84.5vh',width: '100%'}}>
+
+        <div class="sixteen wide column">
         <h1>{this.state.currentEvent.title}</h1>
         <p>{this.state.currentEvent.location ? this.state.currentEvent.location : null}, {this.state.currentEvent.date}</p>
         <img src="this.state.currentEvent.image_url" alt='Image Failed to load'/>
+
+        <div>
+        <Link to="/event/edit"><Button onClick={handleEdit} value='test'>Edit Event</Button></Link>
+        <Button onClick={handleDelete} value={this.state.currentEvent.id}>Delete Event</Button>
         </div>
-        <div class="six wide column">
-        <h1>Event Creator:</h1>
+        </div>
+        
+        <div class="eight wide column">
+          
+        <h2>Event Creator:</h2>
         {this.state.currentEvent.artist ? (
           <div>
             <p>{this.state.currentEvent.artist.artist_name}</p>
+            <a href={this.state.currentEvent.artist.portfolio} target="_blank" rel='noopener noreferrer'>Portfolio</a>
+            <img src={this.state.currentEvent.artist.image_url} style={{height: '100%', width: '100%'}}/>
             <p>{this.state.currentEvent.artist.description}</p>
-            <p>{this.state.currentEvent.artist.image_url}</p>
-            <p>{this.state.currentEvent.artist.portfolio}</p>
           </div> 
           )
           : 'goodbyes'
           }
         </div>
-        <div class="ten wide column">
-        <Link to="/event/edit"><Button onClick={handleEdit} value='test'>Edit Event</Button></Link>
-        <Button onClick={handleDelete} value={this.state.currentEvent.id}>Delete Event</Button>
-        </div>
-        <div class="six wide column">
+        <div class="eight wide column">
         {this.state.currentEvent.latitude ? <Map latitude={this.state.currentEvent.latitude} longitude={this.state.currentEvent.longitude} style={{height: '100%', width: '100%'}}/> : null}
         </div>
       </div>

@@ -30,7 +30,9 @@ const NewEvent = (props) => {
     setLongitude(e.location.lng)
   }
 
-  return (<Form onSubmit={handleSubmit}>
+  return (
+  <div className="new-event">
+  <Form onSubmit={handleSubmit}>
     <p>{errors.join()}</p>
     <Form.Input type="text" placeholder="Event Title" name="title" value={title} onChange={e => setTitle(e.target.value)} icon="heart" iconPosition='left' required/>
     <Form.Input type="text" placeholder="Event Description" name="description" value={description} onChange={e => setDescription(e.target.value)} icon='barcode' iconPosition='left' required/>
@@ -38,7 +40,9 @@ const NewEvent = (props) => {
     <Form.Input type="date" placeholder="Event Date" name="date" value={date} onChange={e => setDate(e.target.value)} icon='time' iconPosition='left' required/>
     <Geosuggest placeholder="Event Location" name="location" value={location} onChange={handleAddress} icon='location arrow' iconPosition='left' required/>
     <Button content='Add Event!' icon='signup' size='big' type='submit' style={{background: 'light-grey'}}/>
-  </Form>)
+  </Form>
+  </div>
+  )
 }
 
 export default NewEvent
