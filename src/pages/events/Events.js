@@ -6,8 +6,7 @@ import { useHistory,Redirect, Link} from "react-router-dom";
 
 export default class Events extends Component {
   state ={
-    events: [],
-    chosenEvent: []
+    events: []
   }
   componentDidMount(){
     fetch('http://localhost:3000/events')
@@ -17,7 +16,9 @@ export default class Events extends Component {
 
   handleClick = id => {
     console.log(this.state.events.find(event => event.id === id))
-    this.props.setChosenEvent(this.state.events.find(event => event.id === id))
+    const chosenEvent = (this.state.events.find(event => event.id === id))
+    console.log(chosenEvent)
+    this.props.setChosenEventId(chosenEvent.id)
     this.props.history.push(`/events/${id}`)
   }
 

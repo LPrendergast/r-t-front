@@ -21,8 +21,8 @@ import AccountEdit from './AccountEdit'
 
 function App({history}) {
   const [artist, setArtist] = useState(null)
-  const [chosenArtist, setChosenArtist] = useState(null)
-  const [chosenEvent, setChosenEvent] = useState(null)
+  const [chosenArtistId, setChosenArtistId] = useState(null)
+  const [chosenEventId, setChosenEventId] = useState(null)
 
   useEffect(() => {
     API.validate().then(artist => {
@@ -42,16 +42,16 @@ function App({history}) {
   return (<div className="App">
     <div className='ui container'><NavBar artist={artist} logout={logout}/>
       <Switch>
-        <Route exact="exact" path="/" component={props => <Events {...props} logout={logout} setChosenEvent={setChosenEvent}/>}/>
+        <Route exact="exact" path="/" component={props => <Events {...props} logout={logout} setChosenEvent={setChosenEventId}/>}/>
         <Route path="/login" component={props => <Login {...props} setArtist={setArtist}/>}/>
         <Route path="/signup" component={props => <Signup {...props} setArtist={setArtist}/>}/>
-        <Route exact="exact" path='/Artists' component={props => <Artists {...props} setArtist={setArtist} setChosenArtist={setChosenArtist}/>}/>
-        <Route exact="exact" path='/Artists/:id' component={props => <ArtistPage {...props} {...chosenArtist}/>}/>
-        <Route exact="exact" path='/Events/:id' render={props => <EventPage {...props} {...chosenEvent}/>}/>
+        <Route exact="exact" path='/Artists' component={props => <Artists {...props} setArtist={setArtist} setChosenArtist={setChosenArtistId}/>}/>
+        <Route exact="exact" path='/Artists/:id' component={props => <ArtistPage {...props} artistId={chosenArtistId}/>}/>
+        <Route exact="exact" path='/Events/:id' render={props => <EventPage {...props} chosenEventId={chosenEventId}/>}/>
         <Route path='/NewEvent' component={props => <NewEvent {...props}/>}/>
         <Route exact="exact" path='/Account' component={props => <Account {...props} {...artist}/>}/>
         <Route exact="exact" path='/Account/edit' component={props => <AccountEdit {...props} {...artist} setArtist={setArtist}/>}/>
-        <Route exact="exact" path='/event/edit' component={props => <EventEdit {...props} {...artist} chosenEvent={chosenEvent} />}/>
+        <Route exact="exact" path='/event/edit' component={props => <EventEdit {...props} {...artist} chosenEvent={chosenEventId} />}/>
 
       </Switch>
     </div>

@@ -17,7 +17,9 @@ export default class Artists extends Component {
 
   handleClick = id => {
     console.log(this.state.artists.find(artist => artist.id === id))
-    this.props.setChosenArtist(this.state.artists.find(artist => artist.id === id))
+    const chosenArtist = (this.state.artists.find(artist => artist.id === id))
+    console.log(chosenArtist)
+    this.props.setChosenArtist(chosenArtist.id)
     this.props.history.push(`/artists/${id}`)
   }
 
