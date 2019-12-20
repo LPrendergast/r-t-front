@@ -9,7 +9,7 @@ export default class ArtistPage extends Component {
     currentArtist: "",
     bodyBackground: "",
     artistPageBackground: "",
-    artistPageFontFamilt: "",
+    artistPageFontFamily: "",
     artistPageFontColour: "",
     artistPageEventColour: ""
   };
@@ -20,16 +20,33 @@ export default class ArtistPage extends Component {
       .then(artist => this.setState({ currentArtist: artist }));
   }
 
+  handleBackgroundChange = () => {
+    console.log("hello");
+  };
+
+  handleFontChange = () => {
+    console.log("hello");
+  };
+
+  handleFontColourChange = () => {
+    console.log("hello");
+  };
+
   render() {
     document.body.style = "background: {this.state.bodyBackground};";
-
     return (
       <div>
-        <DropDownBars />
-
+        <DropDownBars
+          handleBackgroundChange={this.handleBackgroundChange}
+          handleFontChange={this.handleFontChange}
+          handleFontColourChange={this.handleFontColourChange}
+        />
         <div
           class="sixteen wide column card"
-          style={{ overflow: "scroll", width: "100%" }}
+          style={{
+            overflow: "scroll",
+            width: "100%"
+          }}
         >
           <h1>{this.state.currentArtist.artist_name}</h1>
           <img
@@ -47,7 +64,6 @@ export default class ArtistPage extends Component {
               Portfolio Link
             </a>
           </h1>
-          <div></div>
           <div>
             <h1>Artist Events</h1>
 
@@ -62,7 +78,6 @@ export default class ArtistPage extends Component {
                 : "Loading Events"}
             </div>
           </div>
-          <div>{/* <Helmet /> */}</div>
         </div>
       </div>
     );
