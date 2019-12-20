@@ -6,26 +6,45 @@ export default class DropDownBars extends Component {
   state = {
     backgroundColour: "",
     fontFamily: "",
-    fontColour: ""
+    fontColour: "",
+    websiteColour: ""
   };
 
   handleBackgroundChange = color => {
-    this.setState({ backgroundColour: color.hex });
+    this.setState({ backgroundColour: color.hex }, () =>
+      this.props.handleBackgroundChange(this.state.backgroundColour)
+    );
   };
 
   handleFontColourChange = color => {
-    this.setState({ fontColour: color.hex });
+    this.setState({ fontColour: color.hex }, () =>
+      this.props.handleFontColourChange(this.state.fontColour)
+    );
   };
 
   handleFontSubmit = e => {
-    this.setState({ fontFamily: e.target.innerText });
+    this.setState({ fontFamily: e.target.innerText }, () =>
+      this.props.handleFontColourChange(this.state.fontFamily)
+    );
   };
 
+  handleWebsiteChange = color => {
+    this.setState({ websiteColour: color.hex }, () =>
+      this.props.handleWebsiteChange(this.state.websiteColour)
+    );
+  };
 
   render() {
-   
     return (
       <Menu>
+        <Dropdown text="Website Colour" pointing className="link item">
+          <Dropdown.Menu>
+            <SketchPicker
+              color={this.state.websiteColour}
+              onChangeComplete={this.handleWebsiteChange}
+            />
+          </Dropdown.Menu>
+        </Dropdown>
         <Dropdown text="Background Colour" pointing className="link item">
           <Dropdown.Menu>
             <SketchPicker

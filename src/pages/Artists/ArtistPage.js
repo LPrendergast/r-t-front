@@ -11,7 +11,8 @@ export default class ArtistPage extends Component {
     artistPageBackground: "",
     artistPageFontFamily: "",
     artistPageFontColour: "",
-    artistPageEventColour: ""
+    artistPageEventColour: "",
+    websiteBackground: ""
   };
 
   componentDidMount() {
@@ -20,34 +21,45 @@ export default class ArtistPage extends Component {
       .then(artist => this.setState({ currentArtist: artist }));
   }
 
-  handleBackgroundChange = () => {
-    console.log("hello");
+  handleBackgroundChange = colour => {
+    this.setState({ artistPageBackground: colour });
   };
 
-  handleFontChange = () => {
-    console.log("hello");
+  handleFontChange = font => {
+    this.setState({ artistPageFontFamily: font });
   };
 
-  handleFontColourChange = () => {
-    console.log("hello");
+  handleFontColourChange = colour => {
+    this.setState({ artistPageFontColour: colour });
+  };
+
+  handleWebsiteBackgroundChange = colour => {
+    this.setState({ websiteBackground: colour });
   };
 
   render() {
-    document.body.style = "background: {this.state.bodyBackground};";
+    document.body.style.backgroundColor = this.state.websiteBackground
+
+    const divStyle = {
+      background: this.state.artistPageBackground,
+      fontFamily: this.state.artistPageFontFamily,
+      color: this.state.artistPageFontColour,
+      overflow: "scroll",
+      width: "100%"
+    };
+
+    const websiteBackground = {
+      background: this.state.websiteBackground
+    };
     return (
       <div>
         <DropDownBars
           handleBackgroundChange={this.handleBackgroundChange}
           handleFontChange={this.handleFontChange}
           handleFontColourChange={this.handleFontColourChange}
+          handleWebsiteChange={this.handleWebsiteBackgroundChange}
         />
-        <div
-          class="sixteen wide column card"
-          style={{
-            overflow: "scroll",
-            width: "100%"
-          }}
-        >
+        <div class="sixteen wide column card" style={divStyle}>
           <h1>{this.state.currentArtist.artist_name}</h1>
           <img
             src={this.state.currentArtist.image_url}
@@ -70,10 +82,7 @@ export default class ArtistPage extends Component {
             <div class="ui grid">
               {this.state.currentArtist
                 ? this.state.currentArtist.events.map(event => (
-                    <EventDiv
-                      {...event}
-                      eventColor={this.state.artistPageEventColour}
-                    />
+                    <EventDiv {...event} style={divStyle} />
                   ))
                 : "Loading Events"}
             </div>
