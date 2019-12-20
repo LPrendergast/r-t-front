@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import EventDiv from "./EventDiv";
-import { Helmet } from "react-helmet";
-import Application from "./Helmet.js";
+// import Helmet from "./Helmet.js";
+import DropDownBars from "./DropDownBars.js";
 
 export default class ArtistPage extends Component {
   state = {
     artistId: this.props.match.params.id,
-    currentArtist: ""
+    currentArtist: "",
+    bodyBackground: "",
+    artistPageBackground: "",
+    artistPageFontFamilt: "",
+    artistPageFontColour: "",
+    artistPageEventColour: ""
   };
 
   componentDidMount() {
@@ -16,41 +21,48 @@ export default class ArtistPage extends Component {
   }
 
   render() {
-    return (
-      <div
-        class="sixteen wide column card"
-        style={{ overflow: "scroll", width: "100%" }}
-      >
-        <h1>{this.state.currentArtist.artist_name}</h1>
-        <img
-          src={this.state.currentArtist.image_url}
-          alt="Failed to load."
-          style={{ height: "100%", width: "100%" }}
-        />
-        <h1>{this.state.currentArtist.description}</h1>
-        <h1>
-          <a
-            href={this.state.currentArtist.portfolio}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Portfolio Link
-          </a>
-        </h1>
-        <div></div>
-        <div>
-          <h1>Artist Events</h1>
+    document.body.style = "background: {this.state.bodyBackground};";
 
-          <div class="ui grid">
-            {this.state.currentArtist
-              ? this.state.currentArtist.events.map(event => (
-                  <EventDiv {...event} />
-                ))
-              : "Loading Events"}
+    return (
+      <div>
+        <DropDownBars />
+
+        <div
+          class="sixteen wide column card"
+          style={{ overflow: "scroll", width: "100%" }}
+        >
+          <h1>{this.state.currentArtist.artist_name}</h1>
+          <img
+            src={this.state.currentArtist.image_url}
+            alt="Failed to load."
+            style={{ height: "100%", width: "100%" }}
+          />
+          <h1>{this.state.currentArtist.description}</h1>
+          <h1>
+            <a
+              href={this.state.currentArtist.portfolio}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio Link
+            </a>
+          </h1>
+          <div></div>
+          <div>
+            <h1>Artist Events</h1>
+
+            <div class="ui grid">
+              {this.state.currentArtist
+                ? this.state.currentArtist.events.map(event => (
+                    <EventDiv
+                      {...event}
+                      eventColor={this.state.artistPageEventColour}
+                    />
+                  ))
+                : "Loading Events"}
+            </div>
           </div>
-        </div>
-        <div>
-          <Application />
+          <div>{/* <Helmet /> */}</div>
         </div>
       </div>
     );

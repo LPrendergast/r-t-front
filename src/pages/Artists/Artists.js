@@ -19,13 +19,20 @@ export default class Artists extends Component {
   };
 
   render() {
-    document.body.style = "background: red;";
-
     return (
-      <div className="cards-div" style={{ overflow: "scroll", height: "80vh" }}>
-        {this.state.artists.map(artist => (
-          <Artist key={artist.id} {...artist} handleClick={this.handleClick} />
-        ))}
+      <div>
+        <div
+          className="cards-div"
+          style={{ overflow: "scroll", height: "80vh" }}
+        >
+          {this.state.artists.map(artist => (
+            <Artist
+              key={artist.id}
+              {...artist}
+              handleClick={this.handleClick}
+            />
+          ))}
+        </div>
       </div>
     );
   }

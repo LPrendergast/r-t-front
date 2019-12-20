@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-
+  background: white;
 }
 
 /* .form{
@@ -80,7 +80,7 @@ a {
   width: 100%;
   border: 2px solid transparent;
   box-shadow: 0 0 1px #3d464d;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
   transition: border 0.2s, box-shadow 0.2s;
 }
@@ -121,7 +121,7 @@ a {
 .geosuggest__item {
   font-size: 18px;
   font-size: 1rem;
-  padding: .5em .65em;
+  padding: 0.5em 0.65em;
   cursor: hand;
 }
 
@@ -144,22 +144,21 @@ a {
   font-weight: bold;
 }
 
-
 .card {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-.ui.cards>.card {
+.ui.cards > .card {
   cursor: pointer;
 }
 
-.ui.cards>.card:hover {
+.ui.cards > .card:hover {
   background-color: #efefef;
 }
 
-.ui.cards>.create-action.card:hover {
+.ui.cards > .create-action.card:hover {
   background-color: #fff;
 }
 
