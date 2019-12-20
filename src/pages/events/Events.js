@@ -22,7 +22,7 @@ export default class Events extends Component {
 
   render() {
     return (
-      <div className="cards-div">
+      <div className="cards-div" style={{ overflow: "scroll", height: "80vh" }}>
         {this.state.events.map(event => (
           <Event key={event.id} {...event} handleClick={this.handleClick} />
         ))}

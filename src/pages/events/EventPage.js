@@ -36,6 +36,8 @@ export default class EventPage extends Component {
     const handleEdit = () => {
       this.props.setEventEdit(this.state.currentEvent);
     };
+
+    
     return (
       <div class="ui grid" style={{ height: "84.5vh", width: "100%" }}>
         <div class="sixteen wide column">
@@ -46,20 +48,24 @@ export default class EventPage extends Component {
               : null}
             , {this.state.currentEvent.date}
           </p>
-          <img
-            src="this.state.currentEvent.image_url"
-            alt="Image Failed to load"
-          />
+          <img src={this.state.currentEvent.image_url} alt="Failed to load" />
 
           <div>
-            <Link to="/event/edit">
-              <Button onClick={handleEdit} value="test">
-                Edit Event
-              </Button>
-            </Link>
-            <Button onClick={handleDelete} value={this.state.currentEvent.id}>
-              Delete Event
-            </Button>
+            {this.props.artist ? (
+              <div>
+                <Link to="/event/edit">
+                  <Button onClick={handleEdit} value="test">
+                    Edit Event
+                  </Button>
+                </Link>
+                <Button
+                  onClick={handleDelete}
+                  value={this.state.currentEvent.id}
+                >
+                  Delete Event
+                </Button>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -78,6 +84,7 @@ export default class EventPage extends Component {
               <img
                 src={this.state.currentEvent.artist.image_url}
                 style={{ height: "100%", width: "100%" }}
+                alt="Failed to Load."
               />
               <p>{this.state.currentEvent.artist.description}</p>
             </div>

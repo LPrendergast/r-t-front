@@ -45,17 +45,9 @@ export default class Navbar extends Component {
           </Menu.Item>
 
           <Menu.Item
-            name="sign-in"
-            active={activeItem === "sign-in"}
             onClick={this.handleItemClick}
           >
-            {this.props.artist ? (
-              <Link to="/">
-                <div onClick={this.props.logout} className="log-out">
-                  Log out
-                </div>
-              </Link>
-            ) : (
+            {this.props.artist ? null : (
               <Link to="/login">Sign-in/Up</Link>
             )}
           </Menu.Item>

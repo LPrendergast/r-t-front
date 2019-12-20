@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import EventDiv from "./EventDiv";
+import { Helmet } from "react-helmet";
+import Application from "./Helmet.js";
 
 export default class ArtistPage extends Component {
   state = {
@@ -46,6 +48,9 @@ export default class ArtistPage extends Component {
                 ))
               : "Loading Events"}
           </div>
+        </div>
+        <div>
+          <Application />
         </div>
       </div>
     );

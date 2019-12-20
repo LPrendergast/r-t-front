@@ -9,12 +9,24 @@ body {
   border: 1px solid black !important;
 } */
 
-
+.cardimg {
+  background: black !important;
+}
 
 .footer-thing {
   border: 0.5px solid lightgrey !important;
 }
 
+.btn {
+  margin: 10px;
+  background: lightgray !important;
+  color: black !important;
+  border: 0 !important;
+}
+
+.btn:hover {
+  background: white !important;
+}
 
 a {
   color: black !important;
@@ -132,12 +144,6 @@ a {
   font-weight: bold;
 }
 
-.cards-div {
-  height: 80vh;
-  width: 100%;
-  overflow: auto;
-  /* display:inline-block; */
-}
 
 .card {
   position: relative;

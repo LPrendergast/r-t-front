@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "./adapters/API";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import {
   Card,
   Button,
@@ -12,15 +12,14 @@ import {
   CardBody
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
 const Account = ({
   username,
   id,
   artist_name,
   description,
   image_url,
-  portfolio
+  portfolio,
+  logout
 }) => {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
@@ -36,15 +35,6 @@ const Account = ({
       });
   };
 
-  // const handleEdit = (e) => {
-  //   console.log(e.target.value)
-  //   // API.deleteArtist(e.target.value).then( artist =>{
-  //   //     history.push('/')
-  //   // }).catch(errors => {
-  //   //   console.error(errors)
-  //   //   setErrors(errors)
-  //   // })
-  // }
   return (
     <div>
       <h1>{artist_name} account details</h1>
@@ -63,6 +53,12 @@ const Account = ({
       <Button onClick={handleDelete} value={id}>
         Delete Account
       </Button>
+
+      <Link to="/">
+        <Button onClick={logout} value={id}>
+          Log Out
+        </Button>
+      </Link>
     </div>
   );
 };

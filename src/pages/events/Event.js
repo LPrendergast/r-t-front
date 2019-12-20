@@ -28,12 +28,12 @@ const Event = ({
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardSubtitle>
-            {location}, {date}
+            <p>
+              {location}, {date}
+            </p>
           </CardSubtitle>
           <CardText>{description}</CardText>
-          <Button onClick={() => handleClick(id)} value={id}>
-            Event Page
-          </Button>
+          <Button onClick={() => handleClick(id)}>Event Page</Button>
         </CardBody>
       </Card>
     </CardDeck>

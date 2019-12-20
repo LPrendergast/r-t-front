@@ -89,6 +89,7 @@ function App({ history }) {
                 {...props}
                 chosenEvent={chosenEvent}
                 setEventEdit={setEventEdit}
+                artist={artist}
               />
             )}
           />
@@ -99,7 +100,9 @@ function App({ history }) {
           <Route
             exact="exact"
             path="/Account"
-            component={props => <Account {...props} {...artist} />}
+            component={props => (
+              <Account {...props} {...artist} logout={logout} />
+            )}
           />
           <Route
             exact="exact"
