@@ -24,7 +24,7 @@ export default class DropDownBars extends Component {
 
   handleFontSubmit = e => {
     this.setState({ fontFamily: e.target.innerText }, () =>
-      this.props.handleFontColourChange(this.state.fontFamily)
+      this.props.handleFontChange(this.state.fontFamily)
     );
   };
 
@@ -56,7 +56,7 @@ export default class DropDownBars extends Component {
         <Dropdown text="Font Family" pointing className="link item">
           <Dropdown.Menu onClick={this.handleFontSubmit}>
             <div role="option" class="item">
-              arial-selected
+              Arial
             </div>
             <div role="option" class="item">
               Arial Black

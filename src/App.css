@@ -2,7 +2,19 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background: white;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
 }
 
 /* Menu {
@@ -44,6 +56,41 @@ a {
 .nav-bar {
   position: relative;
   border: black !important;
+}
+
+
+.test {
+  display: flex;
+  flex-direction: column;
+  /*specifies main axis to be vertical*/
+  justify-content: space-between;
+  /*main axis positioning*/
+  align-items: center;
+}
+
+.overall {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+.artist-div::-webkit-scrollbar {
+  display: none;
+
+}
+
+.artist-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px;
+  /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box;
+  /* So the width will be 100% + 17px */
 }
 
 .log-out {

@@ -4,12 +4,12 @@ export default class EventDiv extends Component {
   render() {
     return (
       <div class="ui four wide column">
-        <div class="column" style={{ height: "100%", background: "black" }}>
-          <div class="ui segment" style={{ background: "black" }}>
-            <h4>{this.props.title}</h4>
-            <p>{this.props.description}</p>
-            <p>{this.props.date}</p>
-            <p>{this.props.location}</p>
+        <div class="column">
+          <div class="ui segment" style={{ height: "100%" }}>
+            <h4 style={this.props.font}>{this.props.title}</h4>
+            <p style={this.props.font}>{this.props.description}</p>
+            <p style={this.props.font}>{this.props.date}</p>
+            <p style={this.props.font}>{this.props.location}</p>
             <img
               src={this.props.image_url}
               style={{ height: "100%", width: "100%" }}

@@ -41,8 +41,7 @@ export default class ArtistPage extends Component {
     document.body.style.backgroundColor = this.state.websiteBackground;
 
     const divStyle = {
-      background: this.state.artistPageBackground,
-      fontFamily: this.state.artistPageFontFamily,
+      backgroundColor: this.state.artistPageBackground,
       color: this.state.artistPageFontColour,
       width: "100%"
     };
@@ -50,48 +49,54 @@ export default class ArtistPage extends Component {
     const websiteBackground = {
       background: this.state.websiteBackground
     };
-    return (
-      <div>
-        <DropDownBars
-          handleBackgroundChange={this.handleBackgroundChange}
-          handleFontChange={this.handleFontChange}
-          handleFontColourChange={this.handleFontColourChange}
-          handleWebsiteChange={this.handleWebsiteBackgroundChange}
-        />
-        <div
-          style={{
-            margin: "0",
-            padding: "0",
-            overflow: "scroll",
-            height: "70vh"
-          }}
-        >
-          <div class="sixteen wide column card" style={divStyle}>
-            <h1>{this.state.currentArtist.artist_name}</h1>
-            <img
-              src={this.state.currentArtist.image_url}
-              alt="Failed to load."
-              style={{ height: "100%", width: "100%" }}
-            />
-            <h1>{this.state.currentArtist.description}</h1>
-            <h1>
-              <a
-                href={this.state.currentArtist.portfolio}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Portfolio Link
-              </a>
-            </h1>
-            <div>
-              <h1>Artist Events</h1>
 
-              <div class="ui grid">
-                {this.state.currentArtist
-                  ? this.state.currentArtist.events.map(event => (
-                      <EventDiv {...event} style={divStyle} />
-                    ))
-                  : "Loading Events"}
+    return (
+      <div className="overall">
+        <div className="drop-down-menu" style={divStyle}>
+          <DropDownBars
+            handleBackgroundChange={this.handleBackgroundChange}
+            handleFontChange={this.handleFontChange}
+            handleFontColourChange={this.handleFontColourChange}
+            handleWebsiteChange={this.handleWebsiteBackgroundChange}
+          />
+          <div className="artist-div">
+            <div class="sixteen wide column card" style={divStyle}>
+              <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
+                {this.state.currentArtist.artist_name}
+              </h1>
+              <img
+                src={this.state.currentArtist.image_url}
+                alt="Failed to load."
+                style={{ height: "100%", width: "100%" }}
+              />
+              <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
+                {this.state.currentArtist.description}
+              </h1>
+              <h1
+                style={{
+                  fontFamily: this.state.artistPageFontFamily,
+                  divStyle
+                }}
+              >
+                <a
+                  href={this.state.currentArtist.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={divStyle}
+                >
+                  Portfolio Link
+                </a>
+              </h1>
+              <div>
+                <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>Artist Events</h1>
+
+                <div className="ui grid test">
+                  {this.state.currentArtist
+                    ? this.state.currentArtist.events.map(event => (
+                        <EventDiv {...event} font={{ fontFamily: this.state.artistPageFontFamily }}/>
+                      ))
+                    : "Loading Events"}
+                </div>
               </div>
             </div>
           </div>
@@ -100,3 +105,4 @@ export default class ArtistPage extends Component {
     );
   }
 }
+// style={{ divStyle }}

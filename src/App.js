@@ -120,9 +120,9 @@ function App({ history }) {
             component={props => <EventEdit {...props} {...eventEdit} />}
           />
         </Switch>
-        <div className="ui container footer-thing">
+        {/* <div className="ui container footer-thing">
           <Footer />
-        </div>
+        </div> */}
       </div>
     </div>
   );
