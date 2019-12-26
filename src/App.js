@@ -41,7 +41,10 @@ function App({ history }) {
 
   return (
     <div className="App">
-      <div className="ui container">
+      <div
+        className="ui container"
+        style={{ width: "95%", margin: "0", padding: "0", height: "80vh" }}
+      >
         <NavBar artist={artist} logout={logout} />
         <Switch>
           <Route
@@ -117,9 +120,9 @@ function App({ history }) {
             component={props => <EventEdit {...props} {...eventEdit} />}
           />
         </Switch>
-      </div>
-      <div className="ui container footer-thing">
-        <Footer />
+        <div className="ui container footer-thing">
+          <Footer />
+        </div>
       </div>
     </div>
   );

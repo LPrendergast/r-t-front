@@ -32,14 +32,18 @@ const NewEvent = props => {
   };
 
   const handleAddress = e => {
-    setLocation(e.description);
-    setLatitude(e.location.lat);
-    setLongitude(e.location.lng);
+    if (e === undefined) {
+      console.log("yup");
+    } else {
+      setLocation(e.description);
+      setLatitude(e.location.lat);
+      setLongitude(e.location.lng);
+    }
   };
 
   return (
     <div className="new-event">
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} style={{ height: "100%" }}>
         <p>{errors.join()}</p>
         <Form.Input
           type="text"
@@ -85,7 +89,7 @@ const NewEvent = props => {
           placeholder="Event Location"
           name="location"
           value={location}
-          onChange={handleAddress}
+          onSubmit={handleAddress}
           icon="location arrow"
           iconPosition="left"
           required

@@ -38,13 +38,12 @@ export default class ArtistPage extends Component {
   };
 
   render() {
-    document.body.style.backgroundColor = this.state.websiteBackground
+    document.body.style.backgroundColor = this.state.websiteBackground;
 
     const divStyle = {
       background: this.state.artistPageBackground,
       fontFamily: this.state.artistPageFontFamily,
       color: this.state.artistPageFontColour,
-      overflow: "scroll",
       width: "100%"
     };
 
@@ -59,32 +58,41 @@ export default class ArtistPage extends Component {
           handleFontColourChange={this.handleFontColourChange}
           handleWebsiteChange={this.handleWebsiteBackgroundChange}
         />
-        <div class="sixteen wide column card" style={divStyle}>
-          <h1>{this.state.currentArtist.artist_name}</h1>
-          <img
-            src={this.state.currentArtist.image_url}
-            alt="Failed to load."
-            style={{ height: "100%", width: "100%" }}
-          />
-          <h1>{this.state.currentArtist.description}</h1>
-          <h1>
-            <a
-              href={this.state.currentArtist.portfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio Link
-            </a>
-          </h1>
-          <div>
-            <h1>Artist Events</h1>
+        <div
+          style={{
+            margin: "0",
+            padding: "0",
+            overflow: "scroll",
+            height: "70vh"
+          }}
+        >
+          <div class="sixteen wide column card" style={divStyle}>
+            <h1>{this.state.currentArtist.artist_name}</h1>
+            <img
+              src={this.state.currentArtist.image_url}
+              alt="Failed to load."
+              style={{ height: "100%", width: "100%" }}
+            />
+            <h1>{this.state.currentArtist.description}</h1>
+            <h1>
+              <a
+                href={this.state.currentArtist.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Portfolio Link
+              </a>
+            </h1>
+            <div>
+              <h1>Artist Events</h1>
 
-            <div class="ui grid">
-              {this.state.currentArtist
-                ? this.state.currentArtist.events.map(event => (
-                    <EventDiv {...event} style={divStyle} />
-                  ))
-                : "Loading Events"}
+              <div class="ui grid">
+                {this.state.currentArtist
+                  ? this.state.currentArtist.events.map(event => (
+                      <EventDiv {...event} style={divStyle} />
+                    ))
+                  : "Loading Events"}
+              </div>
             </div>
           </div>
         </div>

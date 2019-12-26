@@ -56,7 +56,7 @@ export default class DropDownBars extends Component {
         <Dropdown text="Font Family" pointing className="link item">
           <Dropdown.Menu onClick={this.handleFontSubmit}>
             <div role="option" class="item">
-              Arial
+              arial-selected
             </div>
             <div role="option" class="item">
               Arial Black

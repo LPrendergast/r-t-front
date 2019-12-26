@@ -9,7 +9,7 @@ export default class Geosuggest extends Component {
 
   render() {
     const onSuggestSelect = suggest => {
-      this.props.onChange(suggest);
+      this.props.onSubmit(suggest);
     };
 
     return (

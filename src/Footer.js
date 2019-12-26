@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <Menu className="footer-thing" id='footer-id'>
+        <Menu className="footer-thing" id="footer-id">
           <Menu.Item disabled="disabled">
             Created by
             <a

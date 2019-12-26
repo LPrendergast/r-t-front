@@ -5,9 +5,10 @@ body {
   background: white;
 }
 
-/* .form{
-  border: 1px solid black !important;
+/* Menu {
+  width: 100% !important;
 } */
+
 
 .cardimg {
   background: black !important;
@@ -42,20 +43,21 @@ a {
 
 .nav-bar {
   position: relative;
+  border: black !important;
 }
 
 .log-out {
   float: right;
 }
 
-.column {
+/* .column {
   padding: 0 !important;
   margin: 0 !important;
   bottom: 0 !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-}
+} */
 
 .footer-thing {
   display: flex;
@@ -150,15 +152,15 @@ a {
   width: 100%;
 }
 
-.ui.cards > .card {
+.ui.cards>.card {
   cursor: pointer;
 }
 
-.ui.cards > .card:hover {
+.ui.cards>.card:hover {
   background-color: #efefef;
 }
 
-.ui.cards > .create-action.card:hover {
+.ui.cards>.create-action.card:hover {
   background-color: #fff;
 }
 
@@ -177,6 +179,10 @@ a {
   &:hover {
     z-index: 1;
   }
+}
+
+.ui.container {
+  width: 95%;
 }
 
 .pin {
