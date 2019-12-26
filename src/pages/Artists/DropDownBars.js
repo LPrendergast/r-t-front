@@ -62,7 +62,7 @@ export default class DropDownBars extends Component {
               Arial Black
             </div>
             <div role="option" class="item">
-              Roboto
+              American Typewriter
             </div>
             <div role="option" class="item">
               Times New Roman
@@ -77,22 +77,22 @@ export default class DropDownBars extends Component {
               Verdana
             </div>
             <div role="option" class="item">
-              Georgia
+              Andale Mono
             </div>
             <div role="option" class="item">
               Palatino
             </div>
             <div role="option" class="item">
-              Garamond
+              Optima, sans-serif
             </div>
             <div role="option" class="item">
-              Bookman
+              Helvetica
             </div>
             <div role="option" class="item">
-              Comic Sans
+              Comic Sans MS
             </div>
             <div role="option" class="item">
-              Candara
+              Gill Sans
             </div>
             <div role="option" class="item">
               Impact

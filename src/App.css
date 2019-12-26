@@ -82,6 +82,11 @@ a {
 
 }
 
+.event-page {
+  margin: 0;
+  padding: 0;
+}
+
 .artist-div {
   position: absolute;
   width: 100%;

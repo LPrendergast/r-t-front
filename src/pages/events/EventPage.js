@@ -43,13 +43,14 @@ export default class EventPage extends Component {
       <Grid
         columns={2}
         style={{
-          height: "80vh",
+          height: "85vh",
           margin: "0",
           padding: "0"
         }}
         stretched
+        className="event-page"
       >
-        <Grid.Row stretched celled>
+        <Grid.Row stretched celled style={{ margin: "0" }}>
           <Grid.Column width={10}>
             <Segment>
               <h1>{this.state.currentEvent.title}</h1>
