@@ -45,9 +45,11 @@ export default class Navbar extends Component {
               {this.props.artist ? <Link to="/newevent">Add Event</Link> : null}
             </Menu.Item>
 
-            <Menu.Item onClick={this.handleItemClick}>
-              {this.props.artist ? null : <Link to="/login">Sign-in/Up</Link>}
-            </Menu.Item>
+            {this.props.artist ? null : (
+              <Menu.Item onClick={this.handleItemClick}>
+                <Link to="/login">Sign-in/Up</Link>
+              </Menu.Item>
+            )}
 
             <Menu.Item
               name={this.props.artist ? "account" : null}
