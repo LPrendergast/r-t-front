@@ -14,7 +14,7 @@ export default class Navbar extends Component {
 
     return (
       <div className="nav-bar">
-        <Segment>
+        <Segment stackable="stackable">
           <Menu stackable="stackable" secondary="secondary">
             <Menu.Item>
               <img

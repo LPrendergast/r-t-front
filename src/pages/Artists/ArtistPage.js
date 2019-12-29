@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import EventDiv from "./EventDiv";
 // import Helmet from "./Helmet.js";
 import DropDownBars from "../../components/DropDownBars.js";
+import API from "../../adapters/API";
 
 export default class ArtistPage extends Component {
   state = {
@@ -48,19 +49,43 @@ export default class ArtistPage extends Component {
     this.setState({ websiteBackground: colour });
   };
 
-  createStyle = e =>{
-    console.log('creae')
-  }
+  createStyle = () =>
+    fetch("http://localhost:3000/styles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        website_colour: this.state.websiteBackground,
+        background_colour: this.state.artistPageBackground,
+        font_colour: this.state.artistPageFontColour,
+        font_family: this.state.artistPageFontFamily
+      })
+    }).then(res => res.json());
 
-  updateStyle = e =>{
-    console.log('update')
-  }
+  updateStyle = e =>
+    fetch(`http://localhost:3000/styles/${this.state.currentArtist.style.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        website_colour: this.state.websiteBackground,
+        background_colour: this.state.artistPageBackground,
+        font_colour: this.state.artistPageFontColour,
+        font_family: this.state.artistPageFontFamily
+      })
+    }).then(res => res.json());
 
   handleDesignSubmit = e => {
-    if (this.state.currentArtist.style === null){
-      this.createStyle(e)
-    }else{
-      this.updateStyle(e)
+    if (this.state.currentArtist.style === null) {
+      this.createStyle(e);
+    } else {
+      this.updateStyle(e);
     }
   };
 
