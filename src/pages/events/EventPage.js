@@ -18,7 +18,7 @@ import DropDownBars from "../../components/DropDownBars.js";
 
 export default class EventPage extends Component {
   state = {
-    eventId: this.props.match.params.id,
+    eventId: parseInt(this.props.match.params.id),
     currentEvent: "",
     bodyBackground: "",
     eventPageBackground: "",
@@ -31,7 +31,21 @@ export default class EventPage extends Component {
   componentDidMount() {
     fetch(`http://localhost:3000/events/${this.state.eventId}`)
       .then(res => res.json())
-      .then(event => this.setState({ currentEvent: event }));
+      .then(event => this.setState({ currentEvent: event }))
+      .then(event =>
+        this.state.currentEvent.eventStyle != null
+          ? this.setState({
+              eventPageBackground: this.state.currentEvent.eventStyle
+                .background_colour,
+              eventPageFontFamily: this.state.currentEvent.eventStyle
+                .font_family,
+              eventPageFontColour: this.state.currentEvent.eventStyle
+                .font_colour,
+              websiteBackground: this.state.currentEvent.eventStyle
+                .website_colour
+            })
+          : null
+      );
   }
 
   handleBackgroundChange = colour => {
@@ -48,6 +62,50 @@ export default class EventPage extends Component {
 
   handleWebsiteBackgroundChange = colour => {
     this.setState({ websiteBackground: colour });
+  };
+
+  createStyle = e =>
+    fetch("http://localhost:3000/event_styles", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        website_colour: this.state.websiteBackground,
+        background_colour: this.state.eventPageBackground,
+        font_family: this.state.eventPageFontFamily,
+        font_colour: this.state.eventPageFontColour,
+        event_id: this.state.eventId
+      })
+    }).then(res => res.json());
+
+  updateStyle = e =>
+    fetch(
+      `http://localhost:3000/event_styles/${this.state.currentEvent.eventStyle.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: localStorage.getItem("token")
+        },
+        body: JSON.stringify({
+          website_colour: this.state.websiteBackground,
+          background_colour: this.state.eventPageBackground,
+          font_colour: this.state.eventPageFontColour,
+          font_family: this.state.eventPageFontFamily
+        })
+      }
+    ).then(res => res.json());
+
+  handleDesignSubmit = e => {
+    if (this.state.currentEvent.eventStyle === null) {
+      this.createStyle(e);
+    } else {
+      this.updateStyle(e);
+    }
   };
 
   render() {
@@ -81,6 +139,7 @@ export default class EventPage extends Component {
           handleFontChange={this.handleFontChange}
           handleFontColourChange={this.handleFontColourChange}
           handleWebsiteChange={this.handleWebsiteBackgroundChange}
+          handleDesignSubmit={this.handleDesignSubmit}
         />
         <Grid
           columns={2}

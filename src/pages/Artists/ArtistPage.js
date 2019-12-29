@@ -23,8 +23,7 @@ export default class ArtistPage extends Component {
       .then(artist =>
         this.state.currentArtist.style != null
           ? this.setState({
-              artistPageBackground: this.state.currentArtist.style
-                .background_colour,
+              artistPageBackground: this.state.currentArtist.style.background_colour,
               artistPageFontFamily: this.state.currentArtist.style.font_family,
               artistPageFontColour: this.state.currentArtist.style.font_colour,
               websiteBackground: this.state.currentArtist.style.website_colour
