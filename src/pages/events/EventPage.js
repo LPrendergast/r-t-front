@@ -14,11 +14,18 @@ import { Grid, Segment } from "semantic-ui-react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../adapters/API";
 import Map from "./Map";
+import DropDownBars from "../../components/DropDownBars.js";
 
 export default class EventPage extends Component {
   state = {
     eventId: this.props.match.params.id,
-    currentEvent: ""
+    currentEvent: "",
+    bodyBackground: "",
+    eventPageBackground: "",
+    eventPageFontFamily: "",
+    eventPageFontColour: "",
+    eventPageEventColour: "",
+    websiteBackground: ""
   };
 
   componentDidMount() {
@@ -27,7 +34,25 @@ export default class EventPage extends Component {
       .then(event => this.setState({ currentEvent: event }));
   }
 
+  handleBackgroundChange = colour => {
+    this.setState({ eventPageBackground: colour });
+  };
+
+  handleFontChange = font => {
+    this.setState({ eventPageFontFamily: font });
+  };
+
+  handleFontColourChange = colour => {
+    this.setState({ eventPageFontColour: colour });
+  };
+
+  handleWebsiteBackgroundChange = colour => {
+    this.setState({ websiteBackground: colour });
+  };
+
   render() {
+    document.body.style.backgroundColor = this.state.websiteBackground;
+
     const handleDelete = e => {
       console.log(e.target.value);
       API.deleteEvent(e.target.value).then(event => {
@@ -39,95 +64,105 @@ export default class EventPage extends Component {
       this.props.setEventEdit(this.state.currentEvent);
     };
 
+    const divStyle = {
+      background: this.state.eventPageBackground,
+      color: this.state.eventPageFontColour,
+      fontFamily: this.state.eventPageFontFamily
+    };
+
+    const websiteBackground = {
+      background: this.state.websiteBackground
+    };
+
     return (
-      <Grid
-        columns={2}
-        style={{
-          height: "85vh",
-          margin: "0",
-          padding: "0"
-        }}
-        stretched
-        className="event-page"
-      >
-        <Grid.Row stretched celled style={{ margin: "0" }}>
-          <Grid.Column width={10}>
-            <Segment>
-              <h1>{this.state.currentEvent.title}</h1>
-              <p>
-                {this.state.currentEvent.location
-                  ? this.state.currentEvent.location
-                  : null}
-                , {this.state.currentEvent.date}
-              </p>
-              <img
-                src={this.state.currentEvent.image_url}
-                alt="Failed to load"
-                style={{ height: "50%", width: "100%" }}
-              />
-              {this.props.artist ? (
-                <div>
-                  <Link to="/event/edit">
-                    <Button onClick={handleEdit} value="test">
-                      Edit Event
-                    </Button>
-                  </Link>
-                  <Button
-                    onClick={handleDelete}
-                    value={this.state.currentEvent.id}
-                  >
-                    Delete Event
-                  </Button>
-                </div>
-              ) : null}
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={6}>
-            <Segment>
-              {this.state.currentEvent.artist ? (
-                <div>
-                  <p>{this.state.currentEvent.artist.artist_name}</p>
-                  <a
-                    href={this.state.currentEvent.artist.portfolio}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Portfolio
-                  </a>
-                  <img
-                    src={this.state.currentEvent.artist.image_url}
-                    style={{ height: "100%", width: "100%" }}
-                    alt="Failed to Load."
-                  />
-                  <p>{this.state.currentEvent.artist.description}</p>
-                </div>
-              ) : (
-                "goodbyes"
-              )}
-            </Segment>
-            <Segment
-              style={{
-                height: "100%",
-                padding: "0",
-                margin: "0"
-              }}
-            >
-              {this.state.currentEvent.latitude ? (
-                <Map
-                  latitude={this.state.currentEvent.latitude}
-                  longitude={this.state.currentEvent.longitude}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                    padding: "0",
-                    margin: "0"
-                  }}
+      <div className="drop-down-menu">
+        <DropDownBars
+          handleBackgroundChange={this.handleBackgroundChange}
+          handleFontChange={this.handleFontChange}
+          handleFontColourChange={this.handleFontColourChange}
+          handleWebsiteChange={this.handleWebsiteBackgroundChange}
+        />
+        <Grid
+          columns={2}
+          style={{
+            height: "75vh"
+          }}
+          stretched
+          className="event-page"
+        >
+          <Grid.Row stretched celled style={{ margin: "0" }}>
+            <Grid.Column width={10}>
+              <Segment style={divStyle}>
+                <h1 style={divStyle}>{this.state.currentEvent.title}</h1>
+                <p>
+                  {this.state.currentEvent.location
+                    ? this.state.currentEvent.location
+                    : null}
+                  , {this.state.currentEvent.date}
+                </p>
+                <img
+                  src={this.state.currentEvent.image_url}
+                  alt="Failed to load"
+                  style={{ height: "50%", width: "100%" }}
                 />
-              ) : null}
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+                {this.props.artist ? (
+                  <div>
+                    <Link to="/event/edit">
+                      <Button onClick={handleEdit} value="test">
+                        Edit Event
+                      </Button>
+                    </Link>
+                    <Button
+                      onClick={handleDelete}
+                      value={this.state.currentEvent.id}
+                    >
+                      Delete Event
+                    </Button>
+                  </div>
+                ) : null}
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <Segment style={divStyle}>
+                {this.state.currentEvent.artist ? (
+                  <div>
+                    <p>{this.state.currentEvent.artist.artist_name}</p>
+                    <a
+                      href={this.state.currentEvent.artist.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Portfolio
+                    </a>
+                    <img
+                      src={this.state.currentEvent.artist.image_url}
+                      style={{ height: "100%", width: "100%" }}
+                      alt="Failed to Load."
+                    />
+                    <p>{this.state.currentEvent.artist.description}</p>
+                  </div>
+                ) : (
+                  "goodbyes"
+                )}
+              </Segment>
+              <Segment className="map-div">
+                {this.state.currentEvent.latitude ? (
+                  <Map
+                    latitude={this.state.currentEvent.latitude}
+                    longitude={this.state.currentEvent.longitude}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      padding: "0",
+                      margin: "0"
+                    }}
+                  />
+                ) : null}
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     );
   }
 }

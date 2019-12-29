@@ -17,7 +17,11 @@ export default class Navbar extends Component {
         <Segment>
           <Menu stackable="stackable" secondary="secondary">
             <Menu.Item>
-              <img src="/logo.png" alt="" />
+              <img
+                src="/logo.png"
+                alt=""
+                style={{ height: "15%", width: "15%" }}
+              />
             </Menu.Item>
             <Menu.Item
               name="events"

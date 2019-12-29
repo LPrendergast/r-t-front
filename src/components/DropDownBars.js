@@ -34,6 +34,10 @@ export default class DropDownBars extends Component {
     );
   };
 
+  handleDesignSubmit = e => {
+    this.props.handleDesignSubmit(e);
+  };
+
   render() {
     return (
       <Menu>
@@ -107,6 +111,7 @@ export default class DropDownBars extends Component {
             />
           </Dropdown.Menu>
         </Dropdown>
+        <Menu.Item onClick={this.handleDesignSubmit}>Submit Design</Menu.Item>
       </Menu>
     );
   }

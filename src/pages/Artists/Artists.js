@@ -21,10 +21,7 @@ export default class Artists extends Component {
   render() {
     return (
       <div>
-        <div
-          className="cards-div"
-          style={{ overflow: "scroll", height: "80vh" }}
-        >
+        <div className="cards-div" style={{ height: "80vh" }}>
           {this.state.artists.map(artist => (
             <Artist
               key={artist.id}

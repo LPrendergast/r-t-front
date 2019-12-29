@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventDiv from "./EventDiv";
 // import Helmet from "./Helmet.js";
-import DropDownBars from "./DropDownBars.js";
+import DropDownBars from "../../components/DropDownBars.js";
 
 export default class ArtistPage extends Component {
   state = {
@@ -18,7 +18,18 @@ export default class ArtistPage extends Component {
   componentDidMount() {
     fetch(`http://localhost:3000/artists/${this.state.artistId}`)
       .then(res => res.json())
-      .then(artist => this.setState({ currentArtist: artist }));
+      .then(artist => this.setState({ currentArtist: artist }))
+      .then(artist =>
+        this.state.currentArtist.style != null
+          ? this.setState({
+              artistPageBackground: this.state.currentArtist.style
+                .background_colour,
+              artistPageFontFamily: this.state.currentArtist.style.font_family,
+              artistPageFontColour: this.state.currentArtist.style.font_colour,
+              websiteBackground: this.state.currentArtist.style.website_colour
+            })
+          : null
+      );
   }
 
   handleBackgroundChange = colour => {
@@ -37,6 +48,22 @@ export default class ArtistPage extends Component {
     this.setState({ websiteBackground: colour });
   };
 
+  createStyle = e =>{
+    console.log('creae')
+  }
+
+  updateStyle = e =>{
+    console.log('update')
+  }
+
+  handleDesignSubmit = e => {
+    if (this.state.currentArtist.style === null){
+      this.createStyle(e)
+    }else{
+      this.updateStyle(e)
+    }
+  };
+
   render() {
     document.body.style.backgroundColor = this.state.websiteBackground;
 
@@ -52,12 +79,13 @@ export default class ArtistPage extends Component {
 
     return (
       <div className="overall">
-        <div className="drop-down-menu" style={divStyle}>
+        <div className="drop-down-menu">
           <DropDownBars
             handleBackgroundChange={this.handleBackgroundChange}
             handleFontChange={this.handleFontChange}
             handleFontColourChange={this.handleFontColourChange}
             handleWebsiteChange={this.handleWebsiteBackgroundChange}
+            handleDesignSubmit={this.handleDesignSubmit}
           />
           <div className="artist-div">
             <div class="sixteen wide column card" style={divStyle}>
@@ -88,12 +116,17 @@ export default class ArtistPage extends Component {
                 </a>
               </h1>
               <div>
-                <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>Artist Events</h1>
+                <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
+                  Artist Events
+                </h1>
 
                 <div className="ui grid test">
                   {this.state.currentArtist
                     ? this.state.currentArtist.events.map(event => (
-                        <EventDiv {...event} font={{ fontFamily: this.state.artistPageFontFamily }}/>
+                        <EventDiv
+                          {...event}
+                          font={{ fontFamily: this.state.artistPageFontFamily }}
+                        />
                       ))
                     : "Loading Events"}
                 </div>
