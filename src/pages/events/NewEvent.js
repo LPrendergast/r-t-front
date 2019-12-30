@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
 import { useHistory } from "react-router-dom";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Segment, Grid, Header } from "semantic-ui-react";
 import Geosuggest from "./Geosuggest";
 
 const NewEvent = props => {
@@ -42,67 +42,75 @@ const NewEvent = props => {
   };
 
   return (
-    <div className="new-event">
-      <Form onSubmit={handleSubmit} style={{ height: "100%" }}>
-        <p>{errors.join()}</p>
-        <Form.Input
-          type="text"
-          placeholder="Event Title"
-          name="title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          icon="heart"
-          iconPosition="left"
-          required
-        />
-        <Form.Input
-          type="text"
-          placeholder="Event Description"
-          name="description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-          icon="barcode"
-          iconPosition="left"
-          required
-        />
-        <Form.Input
-          type="url"
-          placeholder="Event Banner Image URL"
-          name="image"
-          value={image_url}
-          onChange={e => setImage(e.target.value)}
-          icon="image"
-          iconPosition="left"
-          required
-        />
-        <Form.Input
-          type="date"
-          placeholder="Event Date"
-          name="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
-          icon="time"
-          iconPosition="left"
-          required
-        />
-        <Geosuggest
-          placeholder="Event Location"
-          name="location"
-          value={location}
-          onSubmit={handleAddress}
-          icon="location arrow"
-          iconPosition="left"
-          required
-        />
-        <Button
-          content="Add Event!"
-          icon="signup"
-          size="big"
-          type="submit"
-          style={{ background: "light-grey" }}
-        />
-      </Form>
-    </div>
+    <Grid textAlign="center" verticalAlign="middle">
+      <Grid.Column style={{ maxWidth: 600 }}>
+        <Header as="h2" color="black" textAlign="center">
+          <img src="logo.png" alt="logo" className="image" />
+          Create Event
+        </Header>
+        <Segment stacked>
+          <Form onSubmit={handleSubmit} style={{ height: "100%" }}>
+            <p>{errors.join()}</p>
+            <Form.Input
+              type="text"
+              placeholder="Event Title"
+              name="title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              icon="heart"
+              iconPosition="left"
+              required
+            />
+            <Form.Input
+              type="text"
+              placeholder="Event Description"
+              name="description"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              icon="barcode"
+              iconPosition="left"
+              required
+            />
+            <Form.Input
+              type="url"
+              placeholder="Event Banner Image URL"
+              name="image"
+              value={image_url}
+              onChange={e => setImage(e.target.value)}
+              icon="image"
+              iconPosition="left"
+              required
+            />
+            <Form.Input
+              type="date"
+              placeholder="Event Date"
+              name="date"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+              icon="time"
+              iconPosition="left"
+              required
+            />
+            <Geosuggest
+              placeholder="Event Location"
+              name="location"
+              value={location}
+              onSubmit={handleAddress}
+              icon="location arrow"
+              iconPosition="left"
+              required
+            />
+            <Button
+              content="Add Event!"
+              icon="signup"
+              size="big"
+              type="submit"
+              style={{ background: "light-grey" }}
+            />
+          </Form>
+        </Segment>
+      </Grid.Column>
+    </Grid>
   );
 };
 

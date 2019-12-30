@@ -61,7 +61,7 @@ const Login = props => {
                 icon="lock"
                 iconPosition="left"
               />
-              <Button type="submit" value="Log in" fluid size="large">
+              <Button type="submit" value="Log in" fluid size="medium">
                 {" "}
                 Log in
               </Button>
@@ -69,7 +69,12 @@ const Login = props => {
           </Form>
 
           <Link to="signup" className="signup-button">
-            <Button content="Sign up" icon="signup" size="big" type="submit" />
+            <Button
+              content="Sign up"
+              icon="signup"
+              size="medium"
+              type="submit"
+            />
           </Link>
         </Grid.Column>
       </Grid>

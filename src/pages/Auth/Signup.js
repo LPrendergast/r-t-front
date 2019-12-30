@@ -111,7 +111,12 @@ const Signup = props => {
                     required
                   />
                 </div>
-                <Button type="submit" value="Create Account" fluid size="large">
+                <Button
+                  type="submit"
+                  value="Create Account"
+                  fluid
+                  size="medium"
+                >
                   {" "}
                   Log in
                 </Button>
@@ -123,7 +128,7 @@ const Signup = props => {
             <Button
               content="Sign up"
               icon="signup"
-              size="big"
+              size="medium"
               type="submit"
               // style={{ color: "grey" }}
             >
