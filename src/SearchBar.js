@@ -1,4 +1,5 @@
 import _ from "lodash";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
 
@@ -7,20 +8,43 @@ const initialState = {
   results: [],
   value: "",
   artists: [],
-  events: []
+  results: [],
+  filteredData: []
 };
 
 export default class SearchBar extends Component {
   state = initialState;
 
+  componentDidMount() {
+    fetch("http://localhost:3000/artists")
+      .then(res => res.json())
+      .then(artists =>
+        this.setState(previousState => ({
+          artists
+        }))
+      );
+  }
+
   handleResultSelect = (e, { result }) =>
     this.setState({ value: result.title });
 
   handleSearchChange = (e, { value }) => {
+    e.preventDefault();
+
     this.setState({ isLoading: true, value });
+    if (this.state.value.length < 3) return;
+
+    const query = value.toLowerCase();
+
+    const thingy = this.state.artists.filter(thing => {
+      return thing.artist_name.includes(query);
+    });
+
+    console.log(thingy);
 
     setTimeout(() => {
-      if (this.state.value.length < 1) return this.setState(initialState);
+      if (this.state.value.length < 1)
+        this.setState({ isLoading: false, results: thingy });
     }, 300);
   };
 

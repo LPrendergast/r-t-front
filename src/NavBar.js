@@ -16,9 +16,9 @@ export default class Navbar extends Component {
     const { isLoading, value, results } = this.state;
 
     return (
-      <div className="nav-bar" class="ui main  stackable">
+      <div className="nav-bar" class="ui main">
         <Segment stackable>
-          <Menu stackable secondary="secondary" maxWidth="90">
+          <Menu stackable secondary="secondary" maxWidth="90" className="thing">
             <Menu.Item>
               <img
                 src="/logo.png"
