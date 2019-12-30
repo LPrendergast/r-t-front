@@ -40,7 +40,7 @@ export default class DropDownBars extends Component {
 
   render() {
     return (
-      <Menu>
+      <Menu stackable>
         <Dropdown text="Website Colour" pointing className="link item">
           <Dropdown.Menu>
             <SketchPicker
@@ -111,7 +111,7 @@ export default class DropDownBars extends Component {
             />
           </Dropdown.Menu>
         </Dropdown>
-        <Menu.Item onClick={this.handleDesignSubmit}>Submit Design</Menu.Item>
+        <Menu.Item onClick={this.handleDesignSubmit}>Save Design</Menu.Item>
       </Menu>
     );
   }

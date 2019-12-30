@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import API from "../../adapters/API";
 import { useHistory } from "react-router-dom";
-import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Form,
+  Grid,
+  Segment,
+  Message,
+  Header
+} from "semantic-ui-react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Login = props => {
@@ -25,7 +33,58 @@ const Login = props => {
   };
 
   return (
-    <Segment placeholder="placeholder" style={{ background: "white" }}>
+    <div className="login-form">
+      <Grid textAlign="center" verticalAlign="middle">
+        <Grid.Column style={{ maxWidth: 600 }}>
+          <Header as="h2" color="black" textAlign="center">
+            <img src="logo.png" alt="logo" className="image" /> Log-in to your
+            account
+          </Header>
+          <Form size="large" onSubmit={handleSubmit}>
+            <p>{errors.join()}</p>
+            <Segment stacked>
+              <Form.Input
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                icon="user"
+                iconPosition="left"
+              />
+              <Form.Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                icon="lock"
+                iconPosition="left"
+              />
+              <Button type="submit" value="Log in" fluid size="large">
+                {" "}
+                Log in
+              </Button>
+            </Segment>
+          </Form>
+
+          <Link to="signup" className="signup-button">
+            <Button content="Sign up" icon="signup" size="big" type="submit" />
+          </Link>
+        </Grid.Column>
+      </Grid>
+    </div>
+  );
+};
+
+export default Login;
+
+{
+  /* <Segment
+      placeholder="placeholder"
+      style={{ background: "white" }}
+      stackable
+    >
       <Grid columns={2} relaxed="very" stackable="stackable">
         <Grid.Column>
           <Form onSubmit={handleSubmit}>
@@ -52,7 +111,7 @@ const Login = props => {
           </Form>
         </Grid.Column>
 
-        <Grid.Column verticalAlign="middle">
+        <Grid.Column verticalAlign="middle" stackable>
           <Link to="signup">
             <Button
               content="Sign up"
@@ -65,9 +124,8 @@ const Login = props => {
         </Grid.Column>
       </Grid>
 
-      <Divider vertical="vertical">Or</Divider>
-    </Segment>
-  );
-};
-
-export default Login;
+      <Divider vertical="vertical" stackable>
+        Or
+      </Divider>
+    </Segment> */
+}
