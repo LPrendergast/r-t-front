@@ -65,7 +65,12 @@ a {
 
 .nav-bar {
   padding: 14px 0 0 0;
+  max-width: 100%;
   position: relative;
+}
+
+.event-header {
+  padding: 14px 0 0 0 !important;
 }
 
 
@@ -76,6 +81,12 @@ a {
   justify-content: space-between;
   /*main axis positioning*/
   align-items: center;
+}
+
+.bar {
+  margin: 0;
+  padding: 0;
+
 }
 
 .overall {

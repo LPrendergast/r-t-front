@@ -44,7 +44,12 @@ const NewEvent = props => {
   return (
     <Grid textAlign="center" verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 600 }}>
-        <Header as="h2" color="black" textAlign="center">
+        <Header
+          as="h2"
+          color="black"
+          textAlign="center"
+          className="event-header"
+        >
           <img src="logo.png" alt="logo" className="image" />
           Create Event
         </Header>

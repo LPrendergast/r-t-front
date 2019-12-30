@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import _ from "lodash";
 import { Menu, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 export default class Navbar extends Component {
   state = {
@@ -11,11 +13,12 @@ export default class Navbar extends Component {
 
   render() {
     const { activeItem } = this.state;
+    const { isLoading, value, results } = this.state;
 
     return (
-      <div className="nav-bar">
-        <Segment stackable="stackable">
-          <Menu stackable="stackable" secondary="secondary">
+      <div className="nav-bar" class="ui main  stackable">
+        <Segment stackable>
+          <Menu stackable secondary="secondary" maxWidth="90">
             <Menu.Item>
               <img
                 src="/logo.png"
@@ -23,6 +26,7 @@ export default class Navbar extends Component {
                 style={{ height: "15%", width: "15%" }}
               />
             </Menu.Item>
+
             <Menu.Item
               name="events"
               position="right"
@@ -54,7 +58,6 @@ export default class Navbar extends Component {
                 <Link to="/login">Sign-in/Up</Link>
               </Menu.Item>
             )}
-
             <Menu.Item
               name={this.props.artist ? "account" : null}
               active={activeItem === "Your Account"}
@@ -63,6 +66,9 @@ export default class Navbar extends Component {
               {this.props.artist ? (
                 <Link to="/account">Your Account</Link>
               ) : null}
+            </Menu.Item>
+            <Menu.Item position="right">
+              <SearchBar className="bar" />
             </Menu.Item>
           </Menu>
         </Segment>
