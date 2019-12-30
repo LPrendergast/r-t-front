@@ -59,9 +59,10 @@ const NewEvent = props => {
               onChange={e => setTitle(e.target.value)}
               icon="heart"
               iconPosition="left"
+              maxLength="100"
               required
             />
-            <Form.Input
+            <Form.TextArea
               type="text"
               placeholder="Event Description"
               name="description"
@@ -70,6 +71,9 @@ const NewEvent = props => {
               icon="barcode"
               iconPosition="left"
               required
+              maxLength="1500"
+              style={{ maxHeight: "40vh" }}
+              resize
             />
             <Form.Input
               type="url"

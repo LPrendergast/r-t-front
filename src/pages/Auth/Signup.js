@@ -45,7 +45,7 @@ const Signup = props => {
     <div className="login-form">
       <Grid textAlign="center" verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 600 }}>
-          <Header as="h2" color="black" textAlign="center">
+          <Header as="h1" color="black" textAlign="center">
             <img src="logo.png" alt="logo" className="image" /> Create an
             account
           </Header>
@@ -60,6 +60,7 @@ const Signup = props => {
                   value={username}
                   onChange={e => setUsername(e.target.value)}
                   required
+                  maxLength="25"
                 />
                 <div className="field">
                   <Form.Input
@@ -69,6 +70,7 @@ const Signup = props => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
+                    maxLength="50"
                   />
                 </div>
                 <div className="field">
@@ -79,6 +81,7 @@ const Signup = props => {
                     value={artist_name}
                     onChange={e => setArtistName(e.target.value)}
                     required
+                    maxLength="100"
                   />
                 </div>
                 <div className="field">
@@ -89,6 +92,7 @@ const Signup = props => {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                     required
+                    maxLength="500"
                   />
                 </div>
                 <div className="field">
@@ -109,6 +113,7 @@ const Signup = props => {
                     value={portfolio}
                     onChange={e => setPortfolio(e.target.value)}
                     required
+                    maxLength="500"
                   />
                 </div>
                 <Button

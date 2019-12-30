@@ -36,7 +36,7 @@ const Login = props => {
     <div className="login-form">
       <Grid textAlign="center" verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 600 }}>
-          <Header as="h2" color="black" textAlign="center">
+          <Header as="h1" color="black" textAlign="center">
             <img src="logo.png" alt="logo" className="image" /> Log-in to your
             account
           </Header>
@@ -51,6 +51,7 @@ const Login = props => {
                 onChange={e => setUsername(e.target.value)}
                 icon="user"
                 iconPosition="left"
+                maxLength="25"
               />
               <Form.Input
                 type="password"
@@ -60,6 +61,7 @@ const Login = props => {
                 onChange={e => setPassword(e.target.value)}
                 icon="lock"
                 iconPosition="left"
+                maxLength="50"
               />
               <Button type="submit" value="Log in" fluid size="medium">
                 {" "}
