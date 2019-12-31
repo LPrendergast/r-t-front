@@ -14,6 +14,7 @@ const NewEvent = props => {
   const [date, setDate] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  document.body.style.backgroundColor = "white";
 
   const handleSubmit = e => {
     e.preventDefault();

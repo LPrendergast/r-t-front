@@ -21,6 +21,8 @@ export default class Events extends Component {
   };
 
   render() {
+    document.body.style.backgroundColor = "white";
+
     return (
       <div className="cards-div" style={{ overflow: "scroll", height: "80vh" }}>
         {this.state.events.map(event => (

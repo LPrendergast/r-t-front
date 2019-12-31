@@ -23,6 +23,7 @@ const Account = ({
 }) => {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  document.body.style.backgroundColor = "white";
 
   const handleDelete = e => {
     API.deleteArtist(e.target.value)

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 export default class LandingPage extends Component {
   render() {
+    document.body.style.backgroundColor = "white";
+
     return (
       <div className="landing-page">
         <div className="ui text container welcome-text">

@@ -22,6 +22,7 @@ const AccountEdit = props => {
   const [id, setId] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  document.body.style.backgroundColor = "white";
 
   const jsonify = res => {
     // if (!res.ok) throw res;

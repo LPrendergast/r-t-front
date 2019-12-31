@@ -19,6 +19,8 @@ export default class Artists extends Component {
   };
 
   render() {
+    document.body.style.backgroundColor = "white";
+
     return (
       <div>
         <div className="cards-div" style={{ height: "80vh" }}>

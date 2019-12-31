@@ -144,7 +144,7 @@ export default class EventPage extends Component {
         <Grid
           columns={2}
           style={{
-            height: "75vh"
+            height: "78vh"
           }}
           stretched
           className="event-page"
