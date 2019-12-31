@@ -5,16 +5,17 @@ import { Route, Switch } from "react-router-dom";
 import API from "./adapters/API";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 import ArtistPage from "./pages/Artists/ArtistPage.js";
 import Artists from "./pages/Artists/Artists.js";
 import Events from "./pages/events/Events.js";
 import EventPage from "./pages/events/EventPage.js";
 import EventEdit from "./pages/events/EventEdit.js";
 import NewEvent from "./pages/events/NewEvent";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import Account from "./Account";
 import AccountEdit from "./AccountEdit";
+import LandingPage from "./pages/LandingPage";
 
 function App({ history }) {
   const [artist, setArtist] = useState(null);
@@ -50,6 +51,11 @@ function App({ history }) {
           <Route
             exact="exact"
             path="/"
+            component={props => <LandingPage {...props} />}
+          />
+          <Route
+            exact="exact"
+            path="/events"
             component={props => (
               <Events
                 {...props}

@@ -19,14 +19,15 @@ export default class Navbar extends Component {
       <div className="nav-bar" class="ui main">
         <Segment stackable>
           <Menu stackable secondary="secondary" maxWidth="90" className="thing">
-            <Menu.Item>
-              <img
-                src="/logo.png"
-                alt=""
-                style={{ height: "15%", width: "15%" }}
-              />
-            </Menu.Item>
-
+            <Link to="/">
+              <Menu.Item>
+                <img
+                  src="/logo.png"
+                  alt=""
+                  style={{ height: "15%", width: "15%" }}
+                />
+              </Menu.Item>
+            </Link>
             <Menu.Item
               name="events"
               position="right"
@@ -34,7 +35,7 @@ export default class Navbar extends Component {
               onClick={this.handleItemClick}
               color="black"
             >
-              <Link to="/">Events</Link>
+              <Link to="/events">Events</Link>
             </Menu.Item>
 
             <Menu.Item

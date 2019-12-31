@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Shadows+Into+Light&display=swap');
+
 html,
 body {
   height: 100%;
@@ -19,6 +21,11 @@ body {
   width: 100% !important;
 } */
 
+
+.welcome-text {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 500%;
+}
 
 .cardimg {
   background: black !important;
@@ -340,6 +347,7 @@ a {
     opacity: 0;
   }
 }
+
 
 @keyframes bounce {
   0% {
