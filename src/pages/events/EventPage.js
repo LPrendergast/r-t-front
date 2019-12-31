@@ -134,13 +134,15 @@ export default class EventPage extends Component {
 
     return (
       <div className="drop-down-menu">
-        <DropDownBars
-          handleBackgroundChange={this.handleBackgroundChange}
-          handleFontChange={this.handleFontChange}
-          handleFontColourChange={this.handleFontColourChange}
-          handleWebsiteChange={this.handleWebsiteBackgroundChange}
-          handleDesignSubmit={this.handleDesignSubmit}
-        />
+        {this.props.artist ? (
+          <DropDownBars
+            handleBackgroundChange={this.handleBackgroundChange}
+            handleFontChange={this.handleFontChange}
+            handleFontColourChange={this.handleFontColourChange}
+            handleWebsiteChange={this.handleWebsiteBackgroundChange}
+            handleDesignSubmit={this.handleDesignSubmit}
+          />
+        ) : null}
         <Grid
           columns={2}
           style={{

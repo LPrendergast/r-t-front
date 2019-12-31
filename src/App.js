@@ -87,7 +87,11 @@ function App({ history }) {
             exact="exact"
             path="/Artists/:id"
             component={props => (
-              <ArtistPage {...props} artistId={chosenArtistId} />
+              <ArtistPage
+                {...props}
+                artistId={chosenArtistId}
+                artist={artist}
+              />
             )}
           />
           <Route

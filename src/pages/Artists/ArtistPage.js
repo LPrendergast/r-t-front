@@ -23,7 +23,8 @@ export default class ArtistPage extends Component {
       .then(artist =>
         this.state.currentArtist.style != null
           ? this.setState({
-              artistPageBackground: this.state.currentArtist.style.background_colour,
+              artistPageBackground: this.state.currentArtist.style
+                .background_colour,
               artistPageFontFamily: this.state.currentArtist.style.font_family,
               artistPageFontColour: this.state.currentArtist.style.font_colour,
               websiteBackground: this.state.currentArtist.style.website_colour
@@ -104,13 +105,16 @@ export default class ArtistPage extends Component {
     return (
       <div className="overall">
         <div className="drop-down-menu">
-          <DropDownBars
-            handleBackgroundChange={this.handleBackgroundChange}
-            handleFontChange={this.handleFontChange}
-            handleFontColourChange={this.handleFontColourChange}
-            handleWebsiteChange={this.handleWebsiteBackgroundChange}
-            handleDesignSubmit={this.handleDesignSubmit}
-          />
+          {this.props.artist ? (
+            <DropDownBars
+              handleBackgroundChange={this.handleBackgroundChange}
+              handleFontChange={this.handleFontChange}
+              handleFontColourChange={this.handleFontColourChange}
+              handleWebsiteChange={this.handleWebsiteBackgroundChange}
+              handleDesignSubmit={this.handleDesignSubmit}
+            />
+          ) : null}
+
           <div className="artist-div">
             <div class="sixteen wide column card" style={divStyle}>
               <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
