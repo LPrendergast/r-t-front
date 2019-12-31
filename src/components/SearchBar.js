@@ -20,6 +20,7 @@ export default class SearchBar extends Component {
     value: "",
     artists: [],
     events: [],
+    data: [],
     results: [],
     filteredData: []
   };
@@ -27,30 +28,42 @@ export default class SearchBar extends Component {
   componentDidMount() {
     fetch("http://localhost:3000/artists")
       .then(res => res.json())
-      .then(artists => this.setState({ artists }))
+      .then(artists =>
+        this.setState({ data: [...this.state.data, ...artists] })
+      )
       .then(
         fetch("http://localhost:3000/events")
           .then(res => res.json())
-          .then(events => this.setState({ events }))
+          .then(events =>
+            this.setState({ data: [...this.state.data, ...events] })
+          )
       );
   }
 
   handleResultSelect = (e, { result }) => this.setState({ value: result });
 
   handleSearchChange = (e, { value }) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     this.setState({ isLoading: true, value });
     const query = value.toLowerCase();
 
-    const thingy = this.state.artists.filter(thing => {
-      return thing.artist_name.includes(query);
+    const thingy = this.state.data.filter(thing => {
+      if (thing.title) {
+        if (thing.title.includes(query)) {
+          return thing.title.includes(query);
+        }
+      }
+      if (thing.artist_name) {
+        if (thing.artist_name.includes(query)) {
+          return thing.artist_name.includes(query);
+        }
+      }
     });
-    // this.state.events.filter(thing => {
-    //   return thing.title.includes(query);
-    // }) ||
 
-    console.log(thingy);
+    // this.state.data.filter(thing => {
+    //   return thing.title.includes(query);
+    // });
 
     setTimeout(() => {
       if (this.state.value.length < 1) return;
