@@ -67,7 +67,7 @@ export default class Navbar extends Component {
                 <Link to="/account">Your Account</Link>
               ) : null}
             </Menu.Item>
-            <Menu.Item position="right">
+            <Menu.Item>
               <SearchBar className="bar" history={this.props.history} />
             </Menu.Item>
           </Menu>

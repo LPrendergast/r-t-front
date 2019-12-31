@@ -98,7 +98,7 @@ const EventEdit = props => {
       <Geosuggest
         name="location"
         placeholder={props.location}
-        onChange={handleAddress}
+        onSubmit={handleAddress}
         icon="location arrow"
         iconPosition="left"
         required

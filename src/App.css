@@ -236,6 +236,10 @@ a {
   font-weight: bold;
 }
 
+.edit-form {
+  padding: 44px 0 0 0 !important;
+}
+
 .card {
   position: relative;
   display: inline-block;
