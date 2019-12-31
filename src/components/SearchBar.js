@@ -2,16 +2,7 @@ import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
-
-// const initialState = {
-//   isLoading: false,
-//   results: [],
-//   value: "",
-//   artists: [],
-//   events: [],
-//   results: [],
-//   filteredData: []
-// };
+import { Link, Redirect } from "react-router-dom";
 
 export default class SearchBar extends Component {
   state = {
@@ -22,7 +13,7 @@ export default class SearchBar extends Component {
     events: [],
     data: [],
     results: [],
-    filteredData: []
+    chosenResult: []
   };
 
   componentDidMount() {
@@ -40,12 +31,23 @@ export default class SearchBar extends Component {
       );
   }
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result });
+  handleResultSelect = (e, { result }) =>
+    this.setState({ chosenResult: result }, () => {
+      this.testThing(this.state.chosenResult);
+    });
+
+  testThing = result => {
+    if (result.title) {
+      this.props.history.push(`/events/${result.id}`);
+    }
+    if (result.artist_name) {
+      this.props.history.push(`/artists/${result.id}`);
+    }
+  };
 
   handleSearchChange = (e, { value }) => {
-    e.preventDefault();
-
-    this.setState({ isLoading: true, value });
+    // e.preventDefault();
+    this.setState({ isLoading: true, value, results: [] });
     const query = value.toLowerCase();
 
     const thingy = this.state.data.filter(thing => {
@@ -59,11 +61,8 @@ export default class SearchBar extends Component {
           return thing.artist_name.includes(query);
         }
       }
+      this.setState({ results: [] });
     });
-
-    // this.state.data.filter(thing => {
-    //   return thing.title.includes(query);
-    // });
 
     setTimeout(() => {
       if (this.state.value.length < 1) return;

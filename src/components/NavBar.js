@@ -68,7 +68,7 @@ export default class Navbar extends Component {
               ) : null}
             </Menu.Item>
             <Menu.Item position="right">
-              <SearchBar className="bar" />
+              <SearchBar className="bar" history={this.props.history} />
             </Menu.Item>
           </Menu>
         </Segment>

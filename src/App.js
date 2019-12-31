@@ -46,14 +46,12 @@ function App({ history }) {
         className="ui container"
         style={{ width: "95%", margin: "0", padding: "0", height: "80vh" }}
       >
-        <NavBar artist={artist} logout={logout} />
+        <NavBar artist={artist} logout={logout} history={history} />
         <Switch>
           <Route
             exact="exact"
             path="/"
-            component={props => (
-              <LandingPage {...props}  />
-            )}
+            component={props => <LandingPage {...props} />}
           />
           <Route
             exact="exact"
