@@ -51,7 +51,9 @@ function App({ history }) {
           <Route
             exact="exact"
             path="/"
-            component={props => <LandingPage {...props} />}
+            component={props => (
+              <LandingPage {...props}  />
+            )}
           />
           <Route
             exact="exact"

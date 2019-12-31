@@ -3,48 +3,58 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
 
-const initialState = {
-  isLoading: false,
-  results: [],
-  value: "",
-  artists: [],
-  results: [],
-  filteredData: []
-};
+// const initialState = {
+//   isLoading: false,
+//   results: [],
+//   value: "",
+//   artists: [],
+//   events: [],
+//   results: [],
+//   filteredData: []
+// };
 
 export default class SearchBar extends Component {
-  state = initialState;
+  state = {
+    isLoading: false,
+    results: [],
+    value: "",
+    artists: [],
+    events: [],
+    results: [],
+    filteredData: []
+  };
 
   componentDidMount() {
     fetch("http://localhost:3000/artists")
       .then(res => res.json())
-      .then(artists =>
-        this.setState(previousState => ({
-          artists
-        }))
+      .then(artists => this.setState({ artists }))
+      .then(
+        fetch("http://localhost:3000/events")
+          .then(res => res.json())
+          .then(events => this.setState({ events }))
       );
   }
 
-  handleResultSelect = (e, { result }) =>
-    this.setState({ value: result.title });
+  handleResultSelect = (e, { result }) => this.setState({ value: result });
 
   handleSearchChange = (e, { value }) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     this.setState({ isLoading: true, value });
-    if (this.state.value.length < 3) return;
-
     const query = value.toLowerCase();
 
     const thingy = this.state.artists.filter(thing => {
       return thing.artist_name.includes(query);
     });
+    // this.state.events.filter(thing => {
+    //   return thing.title.includes(query);
+    // }) ||
 
     console.log(thingy);
 
     setTimeout(() => {
-      if (this.state.value.length < 1)
-        this.setState({ isLoading: false, results: thingy });
+      if (this.state.value.length < 1) return;
+      this.setState({ isLoading: false, results: thingy });
     }, 300);
   };
 
@@ -58,11 +68,9 @@ export default class SearchBar extends Component {
         input={{ icon: "search", iconPosition: "left" }}
         loading={isLoading}
         onResultSelect={this.handleResultSelect}
-        onSearchChange={_.debounce(this.handleSearchChange, 500, {
-          leading: true
-        })}
+        onSearchChange={this.handleSearchChange}
         results={results}
-        value={value}
+        // value={value}
         placeholder="Search"
         {...this.props}
       />

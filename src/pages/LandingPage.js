@@ -8,7 +8,10 @@ export default class LandingPage extends Component {
           <h1 class="ui header" className="welcome-text">
             Welcome to
           </h1>
-          <img src="logo.png"></img>
+          <img src="logo.png" class="ui middle aligned large image"></img>
+          <h1 class="ui header" className="welcome-text">
+            Club
+          </h1>
         </div>
       </div>
     );

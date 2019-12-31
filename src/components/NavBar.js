@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
 import { Menu, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
