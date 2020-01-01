@@ -125,7 +125,7 @@ export default class ArtistPage extends Component {
     return (
       <div className="overall">
         <div className="drop-down-menu">
-          {this.props.artist && this.props.artist.id === this.props.artistId ? (
+          {this.props.artist && this.props.artist.id == this.state.artistId ? (
             <DropDownBars
               handleBackgroundChange={this.handleBackgroundChange}
               handleFontChange={this.handleFontChange}
@@ -169,7 +169,7 @@ export default class ArtistPage extends Component {
                   Artist Events
                 </h1>
 
-                <div className="ui grid test" >
+                <div className="ui grid test">
                   {this.state.currentArtist
                     ? this.state.currentArtist.events.map(event => (
                         <EventDiv
@@ -181,7 +181,7 @@ export default class ArtistPage extends Component {
                     : "Loading Events"}
                 </div>
                 {this.props.artist &&
-                this.props.artist.id === this.props.artistId ? (
+                this.props.artist.id == this.state.artistId ? (
                   <Menu position="right">
                     <Link to="/account/edit">
                       <Button value={this.props.id}>Edit Account</Button>

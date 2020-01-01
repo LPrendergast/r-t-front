@@ -137,7 +137,8 @@ export default class EventPage extends Component {
 
     return (
       <div className="drop-down-menu">
-        {this.state.currentEvent.artist &&
+        {this.props.artist &&
+        this.state.currentEvent.artist &&
         this.state.currentEvent.artist.id === this.props.artist.id ? (
           <DropDownBars
             handleBackgroundChange={this.handleBackgroundChange}
@@ -170,7 +171,8 @@ export default class EventPage extends Component {
                   alt="Failed to load"
                   style={{ height: "50%", width: "100%" }}
                 />
-                {this.state.currentEvent.artist &&
+                {this.props.artist &&
+                this.state.currentEvent.artist &&
                 this.state.currentEvent.artist.id === this.props.artist.id ? (
                   <div>
                     <Link to="/event/edit">

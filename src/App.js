@@ -111,13 +111,18 @@ function App({ history }) {
             path="/NewEvent"
             component={props => <NewEvent {...props} />}
           />
-          <Route
+          {/* <Route
             exact="exact"
             path="/Account"
             component={props => (
-              <Account {...props} {...artist} logout={logout} />
+              <Account
+                {...props}
+                {...artist}
+                logout={logout}
+                artistId={artist.id}
+              />
             )}
-          />
+          /> */}
           <Route
             exact="exact"
             path="/Account/edit"
