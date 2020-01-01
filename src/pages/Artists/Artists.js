@@ -23,7 +23,7 @@ export default class Artists extends Component {
 
     return (
       <div>
-        <div className="cards-div" style={{ height: "80vh" }}>
+        <div class="ui four doubling stackable cards center aligned page grid">
           {this.state.artists.map(artist => (
             <Artist
               key={artist.id}

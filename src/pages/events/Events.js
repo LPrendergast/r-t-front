@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Event from "./Event.js";
 import EventPage from "./EventPage.js";
 import { useHistory, Redirect, Link } from "react-router-dom";
+import { Card, Grid } from "semantic-ui-react";
 
 export default class Events extends Component {
   state = {
@@ -24,11 +25,31 @@ export default class Events extends Component {
     document.body.style.backgroundColor = "white";
 
     return (
-      <div className="cards-div" style={{ overflow: "scroll", height: "80vh" }}>
+      <div class="ui four doubling stackable cards center aligned page grid">
         {this.state.events.map(event => (
           <Event key={event.id} {...event} handleClick={this.handleClick} />
         ))}
       </div>
     );
   }
+}
+{
+  /* <div className="cards-div" style={{ overflow: "scroll", height: "80vh" }}>
+        {this.state.events.map(event => (
+          <Event key={event.id} {...event} handleClick={this.handleClick} />
+        ))}
+      </div> */
+}
+{
+  /* <Card.Group>
+<Card>
+  {this.state.events.map(event => (
+    <Event
+      key={event.id}
+      {...event}
+      handleClick={this.handleClick}
+    />
+  ))}
+</Card>
+</Card.Group> */
 }
