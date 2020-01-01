@@ -14,6 +14,7 @@ import {
   CardSubtitle,
   CardBody
 } from "reactstrap";
+import { Menu } from "semantic-ui-react";
 export default class ArtistPage extends Component {
   state = {
     artistId: this.props.match.params.id,
@@ -120,7 +121,7 @@ export default class ArtistPage extends Component {
     return (
       <div className="overall">
         <div className="drop-down-menu">
-          {this.props.artist ? (
+          {this.props.artist.id === this.props.artistId ? (
             <DropDownBars
               handleBackgroundChange={this.handleBackgroundChange}
               handleFontChange={this.handleFontChange}
@@ -135,18 +136,7 @@ export default class ArtistPage extends Component {
               <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
                 {this.state.currentArtist.artist_name}
               </h1>
-              <Link to="/account/edit">
-                <Button value={this.props.id}>Edit Account</Button>
-              </Link>
-              <Button onClick={handleDelete} value={this.props.id}>
-                Delete Account
-              </Button>
 
-              <Link to="/">
-                <Button onClick={this.props.logout} value={this.props.id}>
-                  Log Out
-                </Button>
-              </Link>
               <img
                 src={this.state.currentArtist.image_url}
                 alt="Failed to load."
@@ -185,6 +175,16 @@ export default class ArtistPage extends Component {
                       ))
                     : "Loading Events"}
                 </div>
+                {this.props.artist.id === this.props.artistId ? (
+                  <Menu position="right">
+                    <Link to="/account/edit">
+                      <Button value={this.props.id}>Edit Account</Button>
+                    </Link>
+                    <Button onClick={handleDelete} value={this.props.id} block>
+                      Delete Account
+                    </Button>
+                  </Menu>
+                ) : null}
               </div>
             </div>
           </div>

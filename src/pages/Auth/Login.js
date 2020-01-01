@@ -11,6 +11,7 @@ import {
   Header
 } from "semantic-ui-react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+document.body.style.backgroundColor = "white";
 
 const Login = props => {
   const [username, setUsername] = useState("");

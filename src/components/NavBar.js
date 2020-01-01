@@ -69,11 +69,24 @@ export default class Navbar extends Component {
                   onClick={() =>
                     this.props.history.push(`/artists/${this.props.artist.id}`)
                   }
+                  small
                 >
                   Your Account{" "}
                 </Button>
               ) : null}
             </Menu.Item>
+            {this.props.artist ? (
+              <Menu.Item
+                name={this.props.artist ? "account" : null}
+                active={activeItem === "Log Out"}
+              >
+                <Link to="/">
+                  <Button onClick={this.props.logout} value={this.props.id}>
+                    Log Out
+                  </Button>
+                </Link>
+              </Menu.Item>
+            ) : null}
             <Menu.Item>
               <SearchBar className="bar" history={this.props.history} />
             </Menu.Item>

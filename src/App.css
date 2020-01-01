@@ -31,6 +31,10 @@ body {
   border: 0.5px solid lightgrey !important;
 }
 
+.account-button {
+  background: none !important;
+}
+
 .drop-down-menu {
   padding: 14px 0 0 0;
 }
