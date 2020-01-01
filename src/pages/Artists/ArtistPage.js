@@ -60,6 +60,10 @@ export default class ArtistPage extends Component {
     this.setState({ websiteBackground: colour });
   };
 
+  handleId = id => {
+    this.props.history.push(`/events/${id}`);
+  };
+
   createStyle = () =>
     fetch("http://localhost:3000/styles", {
       method: "POST",
@@ -165,17 +169,19 @@ export default class ArtistPage extends Component {
                   Artist Events
                 </h1>
 
-                <div className="ui grid test">
+                <div className="ui grid test" >
                   {this.state.currentArtist
                     ? this.state.currentArtist.events.map(event => (
                         <EventDiv
                           {...event}
                           font={{ fontFamily: this.state.artistPageFontFamily }}
+                          handleId={this.handleId}
                         />
                       ))
                     : "Loading Events"}
                 </div>
-                { this.props.artist && this.props.artist.id === this.props.artistId ? (
+                {this.props.artist &&
+                this.props.artist.id === this.props.artistId ? (
                   <Menu position="right">
                     <Link to="/account/edit">
                       <Button value={this.props.id}>Edit Account</Button>

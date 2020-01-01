@@ -74,6 +74,16 @@ a {
   padding: 0;
 }
 
+.events-div {
+  padding: 14px 0 0 0;
+  max-height: 80vh;
+}
+
+.artists-div {
+  padding: 14px 0 0 0;
+  max-height: 80vh;
+}
+
 .nav-bar {
   padding: 14px 0 0 0;
   max-width: 100%;
@@ -239,7 +249,7 @@ a {
   padding: 44px 0 0 0 !important;
 }
 
-/.card {
+.card {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -261,6 +271,13 @@ a {
   background-color: #fff;
 }
 
+.artist-event {
+  cursor: pointer;
+}
+
+.artist-event-div {
+  cursor: pointer;
+}
 
 .marker {
   position: absolute;

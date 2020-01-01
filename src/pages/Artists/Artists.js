@@ -22,13 +22,14 @@ export default class Artists extends Component {
     document.body.style.backgroundColor = "white";
 
     return (
-      <div>
+      <div className="artists-div">
         <div class="ui four doubling stackable cards center aligned page grid">
           {this.state.artists.map(artist => (
             <Artist
               key={artist.id}
               {...artist}
               handleClick={this.handleClick}
+              {...this.props}
             />
           ))}
         </div>

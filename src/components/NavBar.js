@@ -23,7 +23,7 @@ export default class Navbar extends Component {
                 <img
                   src="/logo.png"
                   alt=""
-                  style={{ height: "15%", width: "15%" }}
+                  style={{ height: "50%", width: "50%" }}
                 />
               </Menu.Item>
             </Link>

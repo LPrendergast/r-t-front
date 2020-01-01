@@ -131,13 +131,9 @@ export default class EventPage extends Component {
       background: this.state.websiteBackground
     };
 
-    // const eventy = this.props.artist.events.filter(event => {
-    //   if (event) {
-    //     if (event.id === this.props.chosenEvent) {
-    //       return event.id;
-    //     }
-    //   }
-    // });
+    const handleArtist = e => {
+      this.props.history.push(`/artists/${this.state.currentEvent.artist.id}`);
+    };
 
     return (
       <div className="drop-down-menu">
@@ -193,9 +189,9 @@ export default class EventPage extends Component {
               </Segment>
             </Grid.Column>
             <Grid.Column width={6}>
-              <Segment style={divStyle}>
+              <Segment style={divStyle} className="artist-event-div">
                 {this.state.currentEvent.artist ? (
-                  <div>
+                  <div onClick={handleArtist}>
                     <p>{this.state.currentEvent.artist.artist_name}</p>
                     <a
                       href={this.state.currentEvent.artist.portfolio}

@@ -2,10 +2,17 @@ import React, { Component } from "react";
 
 export default class EventDiv extends Component {
   render() {
+    const handleClick = e => {
+      this.props.handleId(this.props.id);
+    };
     return (
       <div class="ui four wide column">
         <div class="column">
-          <div class="ui segment" style={{ height: "100%" }}>
+          <div
+            class="ui segment artist-event"
+            style={{ height: "100%" }}
+            onClick={handleClick}
+          >
             <h4 style={this.props.font}>{this.props.title}</h4>
             <p style={this.props.font}>{this.props.description}</p>
             <p style={this.props.font}>{this.props.date}</p>

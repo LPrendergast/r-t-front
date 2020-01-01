@@ -25,10 +25,12 @@ export default class Events extends Component {
     document.body.style.backgroundColor = "white";
 
     return (
-      <div class="ui four doubling stackable cards center aligned page grid">
-        {this.state.events.map(event => (
-          <Event key={event.id} {...event} handleClick={this.handleClick} />
-        ))}
+      <div className="events-div">
+        <div class="ui four doubling stackable cards center aligned page grid">
+          {this.state.events.map(event => (
+            <Event key={event.id} {...event} handleClick={this.handleClick} />
+          ))}
+        </div>
       </div>
     );
   }
