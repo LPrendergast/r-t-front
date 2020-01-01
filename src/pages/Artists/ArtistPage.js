@@ -3,7 +3,17 @@ import EventDiv from "./EventDiv";
 // import Helmet from "./Helmet.js";
 import DropDownBars from "../../components/DropDownBars.js";
 import API from "../../adapters/API";
-
+import { Link } from "react-router-dom";
+import {
+  Card,
+  Button,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardDeck,
+  CardSubtitle,
+  CardBody
+} from "reactstrap";
 export default class ArtistPage extends Component {
   state = {
     artistId: this.props.match.params.id,
@@ -90,6 +100,11 @@ export default class ArtistPage extends Component {
   };
 
   render() {
+    const handleDelete = e => {
+      API.deleteArtist(e.target.value).then(artist => {
+        this.props.history.push("/");
+      });
+    };
     document.body.style.backgroundColor = this.state.websiteBackground;
 
     const divStyle = {
@@ -120,6 +135,18 @@ export default class ArtistPage extends Component {
               <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
                 {this.state.currentArtist.artist_name}
               </h1>
+              <Link to="/account/edit">
+                <Button value={this.props.id}>Edit Account</Button>
+              </Link>
+              <Button onClick={handleDelete} value={this.props.id}>
+                Delete Account
+              </Button>
+
+              <Link to="/">
+                <Button onClick={this.props.logout} value={this.props.id}>
+                  Log Out
+                </Button>
+              </Link>
               <img
                 src={this.state.currentArtist.image_url}
                 alt="Failed to load."

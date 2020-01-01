@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import { Menu, Segment, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
@@ -64,7 +64,14 @@ export default class Navbar extends Component {
               onClick={this.handleItemClick}
             >
               {this.props.artist ? (
-                <Link to="/account">Your Account</Link>
+                <Button
+                  className=" account-button"
+                  onClick={() =>
+                    this.props.history.push(`/artists/${this.props.artist.id}`)
+                  }
+                >
+                  Your Account{" "}
+                </Button>
               ) : null}
             </Menu.Item>
             <Menu.Item>

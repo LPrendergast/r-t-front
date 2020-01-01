@@ -91,6 +91,7 @@ function App({ history }) {
                 {...props}
                 artistId={chosenArtistId}
                 artist={artist}
+                logout={logout}
               />
             )}
           />
