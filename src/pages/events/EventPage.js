@@ -112,7 +112,6 @@ export default class EventPage extends Component {
     document.body.style.backgroundColor = this.state.websiteBackground;
 
     const handleDelete = e => {
-      console.log(e.target.value);
       API.deleteEvent(e.target.value).then(event => {
         this.props.history.push("/");
       });
@@ -132,9 +131,18 @@ export default class EventPage extends Component {
       background: this.state.websiteBackground
     };
 
+    // const eventy = this.props.artist.events.filter(event => {
+    //   if (event) {
+    //     if (event.id === this.props.chosenEvent) {
+    //       return event.id;
+    //     }
+    //   }
+    // });
+
     return (
       <div className="drop-down-menu">
-        {this.props.artist ? (
+        {this.state.currentEvent.artist &&
+        this.state.currentEvent.artist.id === this.props.artist.id ? (
           <DropDownBars
             handleBackgroundChange={this.handleBackgroundChange}
             handleFontChange={this.handleFontChange}
@@ -166,7 +174,8 @@ export default class EventPage extends Component {
                   alt="Failed to load"
                   style={{ height: "50%", width: "100%" }}
                 />
-                {this.props.artist ? (
+                {this.state.currentEvent.artist &&
+                this.state.currentEvent.artist.id === this.props.artist.id ? (
                   <div>
                     <Link to="/event/edit">
                       <Button onClick={handleEdit} value="test">
