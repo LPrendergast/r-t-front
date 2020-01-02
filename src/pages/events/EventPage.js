@@ -184,6 +184,7 @@ export default class EventPage extends Component {
             </Grid.Column>
             <Grid.Column width={6}>
               <Segment style={divStyle} className="artist-event-div">
+                <h3>Event Creator</h3>
                 {this.state.currentEvent.artist ? (
                   <div onClick={handleArtist}>
                     <p>{this.state.currentEvent.artist.artist_name}</p>

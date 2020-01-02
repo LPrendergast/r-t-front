@@ -29,7 +29,6 @@ const Event = ({
       <div class="extra content">
         <div class="header">{title}</div>
         <div class="meta">{location}</div>
-        <div class="description">{description}</div>
       </div>
     </div>
   );

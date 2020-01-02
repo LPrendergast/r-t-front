@@ -142,37 +142,41 @@ export default class ArtistPage extends Component {
             className="event-page"
           >
             <Grid.Row stretched celled style={{ margin: "0" }}>
-              <Grid.Column width={13}>
+              <Grid.Column width={11}>
                 <Segment style={divStyle}>
                   <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
                     {this.state.currentArtist.artist_name}
                   </h1>
                   <p style={{ fontFamily: this.state.artistPageFontFamily }}>
-                    {this.state.currentArtist.portfolio
-                      ? this.state.currentArtist.portfolio
-                      : null}
-                    , {this.state.currentArtist.date}
+                    {this.state.currentArtist.portfolio ? (
+                      <a href={this.state.currentArtist.portfolio}>
+                        {" "}
+                        Portfolio
+                      </a>
+                    ) : null}
                   </p>
                   <img
                     src={this.state.currentArtist.image_url}
                     alt="Failed to load"
-                    style={{ height: "25%", width: "100%" }}
+                    style={{ height: "50%", width: "100%" }}
                   />
                   <p style={{ fontFamily: this.state.artistPageFontFamily }}>
                     {this.state.currentArtist.description}
                   </p>
                 </Segment>
               </Grid.Column>
-              <Grid.Column width={3}>
+              <Grid.Column width={5}>
                 <Segment style={divStyle} className="artist-event-div">
+                  <h3>Created Events</h3>
                   {this.state.currentArtist ? (
-                    <div class="ui double stackable cards fluid center aligned page">
+                    <div class="ui double stackable cards fluid centered aligned page">
                       {this.state.currentArtist.events.map(event => (
                         <EventDiv
                           {...event}
                           divStyle={divStyle}
                           font={this.state.artistPageFontFamily}
                           websiteBackground={this.state.websiteBackground}
+                          handleId={this.handleId}
                         />
                       ))}
                     </div>
@@ -182,7 +186,7 @@ export default class ArtistPage extends Component {
                 </Segment>
                 {this.props.artist &&
                 this.props.artist.id == this.state.artistId ? (
-                  <Menu position="right">
+                  <Grid position="right" className="ui centered">
                     <Link to="/account/edit">
                       <Button
                         value={this.props.id}
@@ -191,14 +195,16 @@ export default class ArtistPage extends Component {
                         Edit Account
                       </Button>
                     </Link>
-                    <Button
-                      onClick={handleDelete}
-                      value={this.props.id}
-                      style={{ fontFamily: this.state.artistPageFontFamily }}
-                    >
-                      Delete Account
-                    </Button>
-                  </Menu>
+                    <Link to="/">
+                      <Button
+                        onClick={handleDelete}
+                        value={this.props.id}
+                        style={{ fontFamily: this.state.artistPageFontFamily }}
+                      >
+                        Delete Account
+                      </Button>
+                    </Link>
+                  </Grid>
                 ) : null}
               </Grid.Column>
             </Grid.Row>

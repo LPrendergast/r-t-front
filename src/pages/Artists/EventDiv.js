@@ -11,6 +11,7 @@ export default class EventDiv extends Component {
         onClick={() => handleClick()}
         style={{ background: this.props.websiteBackground }}
       >
+        
         <div class="image">
           <img
             src={this.props.image_url}

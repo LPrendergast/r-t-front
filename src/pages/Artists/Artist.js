@@ -21,19 +21,19 @@ const Artist = ({
 }) => {
   return (
     <div class="card" onClick={() => handleClick(id)}>
-    <div class="image">
-      <img src={image_url} />
+      <div class="image">
+        <img src={image_url} />
+      </div>
+      <div class="extra content">
+        <div class="header">{artist_name}</div>
+        <div class="meta">{portfolio}</div>
+      </div>
     </div>
-    <div class="extra content">
-      <div class="header">{artist_name}</div>
-      <div class="meta">{portfolio}</div>
-      <div class="description">{description}</div>
-    </div>
-  </div>
   );
 };
 export default Artist;
-{/* <CardDeck>
+{
+  /* <CardDeck>
 <Card>
   <CardImg top width="100%" src={image_url} alt="Card image cap" />
   <CardBody>
@@ -47,4 +47,5 @@ export default Artist;
     <Button onClick={() => handleClick(id)}>Artist Page</Button>
   </CardBody>
 </Card>
-</CardDeck> */}
+</CardDeck> */
+}
