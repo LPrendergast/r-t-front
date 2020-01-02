@@ -158,7 +158,9 @@ export default class ArtistPage extends Component {
                     alt="Failed to load"
                     style={{ height: "25%", width: "100%" }}
                   />
-                  <p style={{fontFamily: this.state.artistPageFontFamily }}>{this.state.currentArtist.description}</p>
+                  <p style={{ fontFamily: this.state.artistPageFontFamily }}>
+                    {this.state.currentArtist.description}
+                  </p>
                 </Segment>
               </Grid.Column>
               <Grid.Column width={3}>
@@ -166,7 +168,12 @@ export default class ArtistPage extends Component {
                   {this.state.currentArtist ? (
                     <div class="ui double stackable cards fluid center aligned page">
                       {this.state.currentArtist.events.map(event => (
-                        <EventDiv {...event} handleId={this.handleId}/>
+                        <EventDiv
+                          {...event}
+                          divStyle={divStyle}
+                          font={this.state.artistPageFontFamily}
+                          websiteBackground={this.state.websiteBackground}
+                        />
                       ))}
                     </div>
                   ) : (
@@ -177,9 +184,18 @@ export default class ArtistPage extends Component {
                 this.props.artist.id == this.state.artistId ? (
                   <Menu position="right">
                     <Link to="/account/edit">
-                      <Button value={this.props.id} style={{fontFamily: this.state.artistPageFontFamily }}>Edit Account</Button>
+                      <Button
+                        value={this.props.id}
+                        style={{ fontFamily: this.state.artistPageFontFamily }}
+                      >
+                        Edit Account
+                      </Button>
                     </Link>
-                    <Button onClick={handleDelete} value={this.props.id}  style={{fontFamily: this.state.artistPageFontFamily }}>
+                    <Button
+                      onClick={handleDelete}
+                      value={this.props.id}
+                      style={{ fontFamily: this.state.artistPageFontFamily }}
+                    >
                       Delete Account
                     </Button>
                   </Menu>

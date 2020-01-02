@@ -6,7 +6,11 @@ export default class EventDiv extends Component {
       this.props.handleId(this.props.id);
     };
     return (
-      <div class="card" onClick={() => handleClick()}>
+      <div
+        class="card"
+        onClick={() => handleClick()}
+        style={{ background: this.props.websiteBackground }}
+      >
         <div class="image">
           <img
             src={this.props.image_url}
@@ -14,15 +18,18 @@ export default class EventDiv extends Component {
           />
         </div>
         <div class="extra content">
-          <div
-            class="header"
-            style={{ fontFamily: this.props.eventStyle.font_family }}
-          >
+          <div class="header" style={{ fontFamily: this.props.font }}>
             {this.props.title}
           </div>
-          <div class="meta" style={{ fontFamily: this.props.eventStyle.font_family }}>{this.props.location}</div>
-          <div class="meta" style={{ fontFamily: this.props.eventStyle.font_family }}>{this.props.date}</div>
-          <div class="description" style={{ fontFamily: this.props.eventStyle.font_family }}>{this.props.description}</div>
+          <div class="meta" style={{ fontFamily: this.props.font }}>
+            {this.props.location}
+          </div>
+          <div class="meta" style={{ fontFamily: this.props.font }}>
+            {this.props.date}
+          </div>
+          <div class="description" style={{ fontFamily: this.props.font }}>
+            {this.props.description}
+          </div>
         </div>
       </div>
     );

@@ -1,7 +1,5 @@
-import React, {Component } from "react";
-import {
-  Button
-} from "reactstrap";
+import React, { Component } from "react";
+import { Button } from "reactstrap";
 import { Grid, Segment } from "semantic-ui-react";
 
 import { Link } from "react-router-dom";
@@ -164,6 +162,7 @@ export default class EventPage extends Component {
                   alt="Failed to load"
                   style={{ height: "50%", width: "100%" }}
                 />
+                <p>{this.state.currentEvent.description}</p>
                 {this.props.artist &&
                 this.state.currentEvent.artist &&
                 this.state.currentEvent.artist.id === this.props.artist.id ? (
