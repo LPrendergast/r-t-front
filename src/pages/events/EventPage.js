@@ -1,17 +1,10 @@
-import React, { useState, useEffect, Component } from "react";
+import React, {Component } from "react";
 import {
-  Card,
-  Button,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardDeck,
-  CardSubtitle,
-  CardBody
+  Button
 } from "reactstrap";
 import { Grid, Segment } from "semantic-ui-react";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import API from "../../adapters/API";
 import Map from "./Map";
 import DropDownBars from "../../components/DropDownBars.js";

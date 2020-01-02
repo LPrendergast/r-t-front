@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import EventDiv from "./EventDiv";
-// import Helmet from "./Helmet.js";
 import DropDownBars from "../../components/DropDownBars.js";
 import API from "../../adapters/API";
 import { Link } from "react-router-dom";
@@ -14,7 +13,7 @@ import {
   CardSubtitle,
   CardBody
 } from "reactstrap";
-import { Menu } from "semantic-ui-react";
+import { Menu, Grid, Segment } from "semantic-ui-react";
 export default class ArtistPage extends Component {
   state = {
     artistId: this.props.match.params.id,
@@ -134,8 +133,67 @@ export default class ArtistPage extends Component {
               handleDesignSubmit={this.handleDesignSubmit}
             />
           ) : null}
-
-          <div className="artist-div">
+          <Grid
+            columns={2}
+            style={{
+              height: "75vh"
+            }}
+            stretched
+            className="event-page"
+          >
+            <Grid.Row stretched celled style={{ margin: "0" }}>
+              <Grid.Column width={13}>
+                <Segment style={divStyle}>
+                  <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
+                    {this.state.currentArtist.artist_name}
+                  </h1>
+                  <p style={{ fontFamily: this.state.artistPageFontFamily }}>
+                    {this.state.currentArtist.portfolio
+                      ? this.state.currentArtist.portfolio
+                      : null}
+                    , {this.state.currentArtist.date}
+                  </p>
+                  <img
+                    src={this.state.currentArtist.image_url}
+                    alt="Failed to load"
+                    style={{ height: "25%", width: "100%" }}
+                  />
+                  <p style={{fontFamily: this.state.artistPageFontFamily }}>{this.state.currentArtist.description}</p>
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={3}>
+                <Segment style={divStyle} className="artist-event-div">
+                  {this.state.currentArtist ? (
+                    <div class="ui double stackable cards fluid center aligned page">
+                      {this.state.currentArtist.events.map(event => (
+                        <EventDiv {...event} handleId={this.handleId}/>
+                      ))}
+                    </div>
+                  ) : (
+                    "goodbyes"
+                  )}
+                </Segment>
+                {this.props.artist &&
+                this.props.artist.id == this.state.artistId ? (
+                  <Menu position="right">
+                    <Link to="/account/edit">
+                      <Button value={this.props.id} style={{fontFamily: this.state.artistPageFontFamily }}>Edit Account</Button>
+                    </Link>
+                    <Button onClick={handleDelete} value={this.props.id}  style={{fontFamily: this.state.artistPageFontFamily }}>
+                      Delete Account
+                    </Button>
+                  </Menu>
+                ) : null}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
+      </div>
+    );
+  }
+}
+{
+  /* <div className="artist-div">
             <div class="sixteen wide column card" style={divStyle}>
               <h1 style={{ fontFamily: this.state.artistPageFontFamily }}>
                 {this.state.currentArtist.artist_name}
@@ -193,10 +251,5 @@ export default class ArtistPage extends Component {
                 ) : null}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+          </div> */
 }
-// style={{ divStyle }}

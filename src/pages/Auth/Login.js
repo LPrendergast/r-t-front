@@ -11,13 +11,13 @@ import {
   Header
 } from "semantic-ui-react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-document.body.style.backgroundColor = "white";
 
 const Login = props => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  document.body.style.backgroundColor = "white";
 
   const handleSubmit = e => {
     e.preventDefault();
