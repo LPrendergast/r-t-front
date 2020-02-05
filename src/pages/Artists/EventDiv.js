@@ -27,9 +27,9 @@ export default class EventDiv extends Component {
           <div class="meta" style={{ fontFamily: this.props.font }}>
             {this.props.date}
           </div>
-          <div class="description" style={{ fontFamily: this.props.font }}>
+          {/* <div class="description" style={{ fontFamily: this.props.font }}>
             {this.props.description}
-          </div>
+          </div> */}
         </div>
       </div>
     );

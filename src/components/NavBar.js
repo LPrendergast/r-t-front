@@ -17,18 +17,13 @@ export default class Navbar extends Component {
     return (
       <div className="nav-bar" class="ui main">
         <Segment stackable>
-          <Menu
-            stackable
-            secondary="secondary"
-            maxWidth="90"
-            className="thing"
-          >
+          <Menu stackable secondary="secondary" maxWidth="90" className="thing">
             <Link to="/">
               <Menu.Item>
                 <img
                   src="/logo.png"
                   alt=""
-                  style={{ height: "30%", width: "30%" }}
+                  style={{ height: "20%", width: "20%" }}
                 />
               </Menu.Item>
             </Link>

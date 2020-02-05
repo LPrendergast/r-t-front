@@ -41,11 +41,7 @@ export default class DropDownBars extends Component {
   render() {
     return (
       <Menu stackable>
-        <Dropdown
-          text="Website Colour"
-          pointing
-          className="link item"
-        >
+        <Dropdown text="Website Colour" pointing className="link item">
           <Dropdown.Menu>
             <SketchPicker
               color={this.state.websiteColour}
@@ -110,7 +106,7 @@ export default class DropDownBars extends Component {
         <Dropdown text="Font Colour" pointing className="link item">
           <Dropdown.Menu>
             <SketchPicker
-              color={this.state.backgroundColour}
+              color={this.state.fontColour}
               onChangeComplete={this.handleFontColourChange}
             />
           </Dropdown.Menu>

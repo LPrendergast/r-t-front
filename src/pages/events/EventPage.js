@@ -184,19 +184,14 @@ export default class EventPage extends Component {
             </Grid.Column>
             <Grid.Column width={6}>
               <Segment style={divStyle} className="artist-event-div">
+                <h3>Event Creator</h3>
                 {this.state.currentEvent.artist ? (
                   <div onClick={handleArtist}>
                     <p>{this.state.currentEvent.artist.artist_name}</p>
-                    <a
-                      href={this.state.currentEvent.artist.portfolio}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Portfolio
-                    </a>
+
                     <img
                       src={this.state.currentEvent.artist.image_url}
-                      style={{ height: "100%", width: "100%" }}
+                      style={{ height: "25%", width: "50%" }}
                       alt="Failed to Load."
                     />
                     <p>{this.state.currentEvent.artist.description}</p>

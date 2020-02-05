@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Artist from "./Artist.js";
-import ReactDOM from "react-dom";
 
 export default class Artists extends Component {
   state = {

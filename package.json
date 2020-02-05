@@ -2,6 +2,11 @@
   "name": "r-t-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
+  "engines": {
+    "npm": "6.13.4",
+    "node": "13.6.0"
+  },
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -41,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:LPrendergast/r-t-front.git",
+  "author": "Luke Prendergast <luke.prendergast94@gmail.com>",
+  "license": "MIT"
 }

@@ -55,7 +55,7 @@ const AccountEdit = props => {
       .then(user => {
         console.log(user);
         props.setArtist(user);
-        history.push("/account");
+        history.push(`/artists/${props.id}`);
       })
       .catch(errors => {
         setErrors(errors);

@@ -33,7 +33,12 @@ export default class SearchBar extends Component {
 
   handleResultSelect = (e, { result }) =>
     this.setState({ chosenResult: result }, () => {
-      this.testThing(this.state.chosenResult);
+      if (result.title) {
+        this.props.history.push(`/events/${result.id}`);
+      }
+      if (result.artist_name) {
+        this.props.history.push(`/artists/${result.id}`);
+      }
     });
 
   testThing = result => {
@@ -61,7 +66,7 @@ export default class SearchBar extends Component {
           return thing.artist_name.includes(query);
         }
       }
-      this.setState({ results: [] });
+      return this.setState({ results: [] });
     });
 
     setTimeout(() => {
@@ -82,7 +87,7 @@ export default class SearchBar extends Component {
         onResultSelect={this.handleResultSelect}
         onSearchChange={this.handleSearchChange}
         results={results}
-        // value={value}
+        value={value}
         placeholder="Search"
         {...this.props}
       />
