@@ -26,7 +26,6 @@ const Artist = ({
       </div>
       <div class="extra content">
         <div class="header">{artist_name}</div>
-        <div class="meta">{portfolio}</div>
       </div>
     </div>
   );

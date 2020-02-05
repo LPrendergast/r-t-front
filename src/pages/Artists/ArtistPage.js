@@ -155,11 +155,13 @@ export default class ArtistPage extends Component {
                       </a>
                     ) : null}
                   </p>
-                  <img
-                    src={this.state.currentArtist.image_url}
-                    alt="Failed to load"
-                    style={{ height: "50%", width: "100%" }}
-                  />
+                  <div>
+                    <img
+                      src={this.state.currentArtist.image_url}
+                      alt="Failed to load"
+                      style={{ height: "25%", width: "50%" }}
+                    />
+                  </div>
                   <p style={{ fontFamily: this.state.artistPageFontFamily }}>
                     {this.state.currentArtist.description}
                   </p>
